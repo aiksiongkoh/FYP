@@ -8,3 +8,8 @@ Class {
 	#package : 'AST-Core',
 	#tag : 'Formatter'
 }
+
+{ #category : 'as yet unclassified' }
+RBAbstractFormatter class >> priority [
+	^ self subclassResponsibility
+]
