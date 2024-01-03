@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOMarker class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOMarker >> aApm [
 	| aAPp aAPm |

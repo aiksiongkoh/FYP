@@ -44,17 +44,15 @@ Instance Variables:
 	
 "
 Class {
-	#name : 'RBParseTreeRewriter',
-	#superclass : 'RBParseTreeSearcher',
+	#name : #RBParseTreeRewriter,
+	#superclass : #RBParseTreeSearcher,
 	#instVars : [
 		'tree'
 	],
-	#category : 'AST-Core-Matching',
-	#package : 'AST-Core',
-	#tag : 'Matching'
+	#category : 'AST-Core-Matching'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> removeTemporaryNamed: aName [
 	| rewriteRule |
 	rewriteRule := self new.
@@ -63,7 +61,7 @@ RBParseTreeRewriter class >> removeTemporaryNamed: aName [
 	^rewriteRule
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> rename: varName to: newVarName [
 	| rewriteRule |
 	rewriteRule := self new.
@@ -73,7 +71,7 @@ RBParseTreeRewriter class >> rename: varName to: newVarName [
 	^rewriteRule
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> rename: varName to: newVarName handler: aBlock [
 	"Rename varName to newVarName, evaluating aBlock if there is a
 	temporary variable with the same name as newVarName. This
@@ -91,7 +89,7 @@ RBParseTreeRewriter class >> rename: varName to: newVarName handler: aBlock [
 	^rewriteRule
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParseTreeRewriter class >> replace: code with: newCode in: aParseTree [
 	^(self
 		replace: code
@@ -101,7 +99,7 @@ RBParseTreeRewriter class >> replace: code with: newCode in: aParseTree [
 		tree
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParseTreeRewriter class >> replace: code with: newCode in: aParseTree onInterval: anInterval [
 	| rewriteRule |
 	rewriteRule := self new.
@@ -113,7 +111,7 @@ RBParseTreeRewriter class >> replace: code with: newCode in: aParseTree onInterv
 		tree
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> replace: code with: newCode method: aBoolean [
 	| rewriteRule |
 	rewriteRule := self new.
@@ -123,7 +121,7 @@ RBParseTreeRewriter class >> replace: code with: newCode method: aBoolean [
 	^rewriteRule
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> replaceLiteral: literal with: newLiteral [
 	| rewriteRule |
 	rewriteRule := self new.
@@ -132,7 +130,7 @@ RBParseTreeRewriter class >> replaceLiteral: literal with: newLiteral [
 	^rewriteRule
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParseTreeRewriter class >> replaceStatements: code with: newCode in: aParseTree onInterval: anInterval [
 	| tree replaceStmt |
 	tree := self buildTree: code method: false.
@@ -150,7 +148,7 @@ RBParseTreeRewriter class >> replaceStatements: code with: newCode in: aParseTre
 		onInterval: anInterval
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> variable: aVarName getter: getMethod setter: setMethod [
 	^self
 		variable: aVarName
@@ -159,7 +157,7 @@ RBParseTreeRewriter class >> variable: aVarName getter: getMethod setter: setMet
 		receiver: 'self'
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 RBParseTreeRewriter class >> variable: aVarName getter: getMethod setter: setMethod receiver: aString [
 	| rewriteRule |
 	rewriteRule := self new.
@@ -170,7 +168,7 @@ RBParseTreeRewriter class >> variable: aVarName getter: getMethod setter: setMet
 	^rewriteRule
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParseTreeRewriter >> executeTree: aParseTree [
 	"Replace the argument node based on the replace rules. Return false when no transformation has been applied, and true when a transformation occured.
 
@@ -195,14 +193,14 @@ RBParseTreeRewriter >> executeTree: aParseTree [
 	^answer
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParseTreeRewriter >> foundMatch [
 	"Set that the pattern matched is a successful"
 
 	answer := true
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParseTreeRewriter >> lookForMoreMatchesInContext: oldContext [
 	oldContext keysAndValuesDo: [:key :value |
 		(key isString not and: [key recurseInto])
@@ -210,7 +208,7 @@ RBParseTreeRewriter >> lookForMoreMatchesInContext: oldContext [
 				[oldContext at: key put: (value collect: [:each | self visitNode: each])]]
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replace: searchString with: replaceString [
    "Add a new replace pattern. To get the replacement executed invoke executeTree: method."
 
@@ -218,7 +216,7 @@ RBParseTreeRewriter >> replace: searchString with: replaceString [
 				replaceWith: replaceString)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replace: searchString with: replaceString when: aBlock [
 	"Add a new replace pattern when condition is true. To get the replacement executed invoke executeTree: method."
 
@@ -228,13 +226,13 @@ RBParseTreeRewriter >> replace: searchString with: replaceString when: aBlock [
 				when: aBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replace: searchString withValueFrom: replaceBlock [
 	self addRule: (RBBlockReplaceRule searchFor: searchString
 				replaceWith: replaceBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replace: searchString withValueFrom: replaceBlock when: conditionBlock [
 	self addRule: (RBBlockReplaceRule
 				searchFor: searchString
@@ -242,13 +240,13 @@ RBParseTreeRewriter >> replace: searchString withValueFrom: replaceBlock when: c
 				when: conditionBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceArgument: searchString with: replaceString [
 	self addArgumentRule: (RBStringReplaceRule searchFor: searchString
 				replaceWith: replaceString)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceArgument: searchString with: replaceString when: aBlock [
 	self addArgumentRule: (RBStringReplaceRule
 				searchFor: searchString
@@ -256,13 +254,13 @@ RBParseTreeRewriter >> replaceArgument: searchString with: replaceString when: a
 				when: aBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceArgument: searchString withValueFrom: replaceBlock [
 	self addArgumentRule: (RBBlockReplaceRule searchFor: searchString
 				replaceWith: replaceBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceArgument: searchString withValueFrom: replaceBlock when: conditionBlock [
 	self addArgumentRule: (RBBlockReplaceRule
 				searchFor: searchString
@@ -270,13 +268,13 @@ RBParseTreeRewriter >> replaceArgument: searchString withValueFrom: replaceBlock
 				when: conditionBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceMethod: searchString with: replaceString [
 	self addRule: (RBStringReplaceRule searchForMethod: searchString
 				replaceWith: replaceString)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceMethod: searchString with: replaceString when: aBlock [
 	self addRule: (RBStringReplaceRule
 				searchForMethod: searchString
@@ -284,13 +282,13 @@ RBParseTreeRewriter >> replaceMethod: searchString with: replaceString when: aBl
 				when: aBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceMethod: searchString withValueFrom: replaceBlock [
 	self addRule: (RBBlockReplaceRule searchForMethod: searchString
 				replaceWith: replaceBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceMethod: searchString withValueFrom: replaceBlock when: conditionBlock [
 	self addRule: (RBBlockReplaceRule
 				searchForMethod: searchString
@@ -298,7 +296,7 @@ RBParseTreeRewriter >> replaceMethod: searchString withValueFrom: replaceBlock w
 				when: conditionBlock)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceTree: searchTree withTree: replaceTree [
 	"Add a replacement between a given tree and a replacement tree. To get the replacement executed invoke executeTree: method."
 
@@ -306,7 +304,7 @@ RBParseTreeRewriter >> replaceTree: searchTree withTree: replaceTree [
 				replaceWith: replaceTree)
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 RBParseTreeRewriter >> replaceTree: searchTree withTree: replaceTree when: aBlock [
 	"Add a replacement between a given tree and a replacement tree when a condition. To get the replacement executed invoke executeTree: method."
 
@@ -316,36 +314,36 @@ RBParseTreeRewriter >> replaceTree: searchTree withTree: replaceTree when: aBloc
 				when: aBlock)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParseTreeRewriter >> tree [
 	"Return the rewritten tree"
 
 	^tree
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBParseTreeRewriter >> visitArgumentNodes: aNodeCollection [
 	^aNodeCollection collect: [:each | self visitArgumentNode: each]
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitArrayNode: anArrayNode [
 	anArrayNode statements: (anArrayNode statements collect: [:each | self visitNode: each])
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitAssignmentNode: anAssignmentNode [
 	anAssignmentNode variable: (self visitNode: anAssignmentNode variable).
 	anAssignmentNode value: (self visitNode: anAssignmentNode value)
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitBlockNode: aBlockNode [
 	aBlockNode arguments: (self visitArgumentNodes: aBlockNode arguments).
 	aBlockNode body: (self visitNode: aBlockNode body)
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitCascadeNode: aCascadeNode [
 
 	| newMessages notFound |
@@ -381,41 +379,41 @@ RBParseTreeRewriter >> visitCascadeNode: aCascadeNode [
 	aCascadeNode messages: newMessages
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitLiteralArrayNode: aRBArrayLiteralNode [
 	aRBArrayLiteralNode contents: (aRBArrayLiteralNode contents collect: [ :each | self visitNode: each ])
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitMessageNode: aMessageNode [
 	aMessageNode receiver: (self visitNode: aMessageNode receiver).
 	aMessageNode arguments: (aMessageNode arguments collect: [ :each | self visitNode: each ])
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitMethodNode: aMethodNode [
 	aMethodNode arguments: (self visitArgumentNodes: aMethodNode arguments).
 	aMethodNode pragmas: (aMethodNode pragmas collect: [ :each | self visitNode: each ]).
 	aMethodNode body: (self visitNode: aMethodNode body)
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitPragmaNode: aPragmaNode [
 	aPragmaNode arguments: (aPragmaNode arguments collect: [ :each | self visitNode: each ])
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitReturnNode: aReturnNode [
 	aReturnNode value: (self visitNode: aReturnNode value)
 ]
 
-{ #category : 'visitor - double dispatching' }
+{ #category : #'visitor - double dispatching' }
 RBParseTreeRewriter >> visitSequenceNode: aSequenceNode [
 	aSequenceNode temporaries: (self visitTemporaryNodes: aSequenceNode temporaries).
 	aSequenceNode statements: (aSequenceNode statements collect: [ :each | self visitNode: each ])
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBParseTreeRewriter >> visitTemporaryNodes: aNodeCollection [
 	^aNodeCollection collect: [:each | self visitTemporaryDeclarationNode: each]
 ]

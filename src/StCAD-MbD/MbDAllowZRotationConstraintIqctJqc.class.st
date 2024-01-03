@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAllowZRotationConstraintIqctJqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'input-output' }
 MbDAllowZRotationConstraintIqctJqc >> postInput [
 

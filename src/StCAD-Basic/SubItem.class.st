@@ -8,15 +8,6 @@ Class {
 	#category : #'StCAD-Basic'
 }
 
-{ #category : #'VisualWorks metadata' }
-SubItem class >> visualWorksMetadata [
-
-	^ #(
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 SubItem >> aSup [
 	^aSup

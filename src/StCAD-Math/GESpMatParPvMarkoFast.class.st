@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-GESpMatParPvMarkoFast class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #pivoting }
 GESpMatParPvMarkoFast >> doPivoting: p [ 
 	"Search from bottom to top."

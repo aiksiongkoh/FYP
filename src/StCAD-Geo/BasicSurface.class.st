@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicSurface class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 BasicSurface >> pprfpfpsps_s: s [ 
 	| answer u v pprfpfpupu pprfpfpupv pprfpfpvpv |

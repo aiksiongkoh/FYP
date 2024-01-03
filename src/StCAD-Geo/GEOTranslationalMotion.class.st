@@ -4,26 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEOTranslationalMotion class >> mbdClass [
-	^MbDZTranslation
-]
-
-{ #category : #accessing }
-GEOTranslationalMotion class >> nameString [
-	^'TranslationalMotion'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOTranslationalMotion class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEOTranslationalMotion >> createMbD [
 	| zFunc parser stack func mbdZTranslation |

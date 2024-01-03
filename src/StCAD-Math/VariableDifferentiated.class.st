@@ -6,13 +6,3 @@ Class {
 	],
 	#category : #'StCAD-Math'
 }
-
-{ #category : #'VisualWorks metadata' }
-VariableDifferentiated class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]

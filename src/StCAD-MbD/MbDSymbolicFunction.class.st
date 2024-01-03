@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDSymbolicFunction class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.UI'
-	)
-
-]
-
 { #category : #'message handling' }
 MbDSymbolicFunction >> argsPerform: selector withArguments: anArray [ 
 	^x perform: selector withArguments: anArray

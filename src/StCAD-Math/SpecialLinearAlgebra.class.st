@@ -4,15 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySpecial'
 }
 
-{ #category : #'VisualWorks metadata' }
-SpecialLinearAlgebra class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 SpecialLinearAlgebra >> at: i and: j put: aNumber [ 
 	"Special vectors and matrices are to be read only."

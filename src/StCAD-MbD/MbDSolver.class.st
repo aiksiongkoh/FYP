@@ -4,20 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'instance creation' }
-MbDSolver class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDSolver class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDSolver >> initialize [
 ]

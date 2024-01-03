@@ -4,29 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-Product class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Product class >> with: arg1 times: arg2 [ 
-	^super with: arg1 with: arg2
-]
-
-{ #category : #'instance creation' }
-Product class >> with: arg1 times: arg2 times: arg3 [ 
-	^super
-		with: arg1
-		with: arg2
-		with: arg3
-]
-
 { #category : #'StCAD-UI' }
 Product >> cadStringOn: aStream [ 
 	1 to: terms size

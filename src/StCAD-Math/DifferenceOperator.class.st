@@ -64,28 +64,6 @@ Class {
 	#category : #'StCAD-Math-StMathDifferenceOperator'
 }
 
-{ #category : #'class initialization' }
-DifferenceOperator class >> initialize [
-	"StMDifferenceOperator initialize."
-
-	OneOverFactorials := FullRow new: 10.
-	1 to: OneOverFactorials size do: [:i | OneOverFactorials at: i put: 1.0d / i factorial]
-]
-
-{ #category : #'instance creation' }
-DifferenceOperator class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-DifferenceOperator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 DifferenceOperator >> calcOperatorMatrix [
 	"Compute operatorMatrix such that 

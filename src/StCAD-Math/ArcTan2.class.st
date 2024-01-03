@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #accessing }
-ArcTan2 class >> functionSymbol [
-	^'arctan2'
-]
-
-{ #category : #'VisualWorks metadata' }
-ArcTan2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #evaluating }
 ArcTan2 >> differentiateWRT: variable [ 
 	| arg dargdvar dfuncdarg |

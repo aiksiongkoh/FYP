@@ -2,17 +2,15 @@
 maybe Color could act as a AthensPaint by itself by implementing a corresponding protocol
 "
 Class {
-	#name : 'AthensBalloonSolidColorPaint',
-	#superclass : 'AthensBalloonPaint',
+	#name : #AthensBalloonSolidColorPaint,
+	#superclass : #AthensBalloonPaint,
 	#instVars : [
 		'color'
 	],
-	#category : 'Athens-Balloon-Paint',
-	#package : 'Athens-Balloon',
-	#tag : 'Paint'
+	#category : 'Athens-Balloon-Paint'
 }
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonSolidColorPaint >> athensFillPath: athensBalloonPath on: anAthensCanvas [
 
 	^ anAthensCanvas surface
@@ -20,7 +18,7 @@ AthensBalloonSolidColorPaint >> athensFillPath: athensBalloonPath on: anAthensCa
 		color: color
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonSolidColorPaint >> athensFillRectangle: aRect on: canvas [
 	"This is a terminal method in rendering dispatch scheme
 	canvas->shape->paint. See AthensCanvas>>fillShape: "
@@ -28,19 +26,19 @@ AthensBalloonSolidColorPaint >> athensFillRectangle: aRect on: canvas [
 	^ canvas surface fillRectangle: aRect color: color
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonSolidColorPaint >> color [
 
 	^ color
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonSolidColorPaint >> color: anObject [
 
 	color := anObject
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonSolidColorPaint >> strokePath: aPath on: anAthensCanvas stroke: strokePaint [
 
 	 anAthensCanvas surface
@@ -49,7 +47,7 @@ AthensBalloonSolidColorPaint >> strokePath: aPath on: anAthensCanvas stroke: str
 		width: strokePaint width
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonSolidColorPaint >> strokePath: aPath on: anAthensCanvas strokeWidth: strokeWidth [
 
 	 anAthensCanvas surface
@@ -58,13 +56,13 @@ AthensBalloonSolidColorPaint >> strokePath: aPath on: anAthensCanvas strokeWidth
 		width: strokeWidth
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonSolidColorPaint >> strokeRect: rect on: canvas stroke: strokePaint [
 
 	^ canvas surface strokeRectangle: rect color: color width: strokePaint width
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonSolidColorPaint >> strokeRect: rect on: canvas strokeWidth: strokeWidth [
 
 	^ canvas surface strokeRectangle: rect color: color width: strokeWidth

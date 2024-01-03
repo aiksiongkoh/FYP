@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOMETRIC_SET class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 GEOMETRIC_SET >> elements [
 	^elements

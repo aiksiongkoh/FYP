@@ -16,16 +16,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDNonlinearCoupler class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDNonlinearCoupler >> calcPostDynCorrectorIteration [
 	"ppGpqpq is too complicated to store and will be computed on the fly."

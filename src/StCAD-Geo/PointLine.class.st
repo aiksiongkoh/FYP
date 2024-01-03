@@ -13,34 +13,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'instance creation' }
-PointLine class >> a0: a0 aDir: aDir b0: b0 [ 
-	^(super new)
-		a0: a0
-			aDir: aDir
-			b0: b0;
-		calc;
-		yourself
-]
-
-{ #category : #'instance creation' }
-PointLine class >> aStartPoint: aStartPoint aEndPoint: aEndPoint bPoint: bPoint [ 
-	^self 
-		a0: aStartPoint
-		aDir: aEndPoint - aStartPoint
-		b0: bPoint
-]
-
-{ #category : #'VisualWorks metadata' }
-PointLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 PointLine >> a0 [
 	^a0

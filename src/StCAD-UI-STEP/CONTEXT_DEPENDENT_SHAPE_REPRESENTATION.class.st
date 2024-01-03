@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-CONTEXT_DEPENDENT_SHAPE_REPRESENTATION class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #'As yet unclassified' }
 CONTEXT_DEPENDENT_SHAPE_REPRESENTATION >> _cRELATIONSHIP1: cRELATIONSHIP [ 
 	| aRELATIONSHIP rep_2 aSHAPE_RELATIONSHIP |

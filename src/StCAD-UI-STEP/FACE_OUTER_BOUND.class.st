@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-FACE_OUTER_BOUND class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 FACE_OUTER_BOUND >> bound [
 	^bound

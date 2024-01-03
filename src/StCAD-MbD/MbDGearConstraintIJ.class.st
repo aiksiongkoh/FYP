@@ -18,25 +18,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDGearConstraintIJ class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDGearConstraintIJ class >> withFrmI: afrmI frmJ: afrmJ [ 
-	| instance |
-	self allSubclasses do: 
-			[:subclass | 
-			instance := subclass withFrmI: afrmI frmJ: afrmJ.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDGearConstraintIJ >> calcPostDynCorrectorIteration [
 	aG := orbitJeIe value + (self ratio * orbitIeJe value) - aConstant

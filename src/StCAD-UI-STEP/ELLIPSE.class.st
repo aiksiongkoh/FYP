@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-ELLIPSE class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 ELLIPSE >> semi_axis_1 [
 	^semi_axis_1

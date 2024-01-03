@@ -12,13 +12,3 @@ Class {
 	],
 	#category : #'StCAD-Misc'
 }
-
-{ #category : #'VisualWorks metadata' }
-DataPosVelAcc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]

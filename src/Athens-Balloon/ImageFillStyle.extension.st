@@ -1,10 +1,10 @@
-Extension { #name : 'ImageFillStyle' }
+Extension { #name : #ImageFillStyle }
 
-{ #category : '*Athens-Balloon' }
+{ #category : #'*Athens-Balloon' }
 ImageFillStyle >> asAthensPaintOn: anAthensCanvas [
 
 	^ (anAthensCanvas cacheAt: self ifAbsentPut: [
 		anAthensCanvas surface
-		createFormPaint: self form ])
+		createFormPaint: form ])
 		origin: origin
 ]

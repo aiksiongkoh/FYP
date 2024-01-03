@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-ORIENTED_CLOSED_SHELL class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 ORIENTED_CLOSED_SHELL >> closed_shell_element [
 	^closed_shell_element

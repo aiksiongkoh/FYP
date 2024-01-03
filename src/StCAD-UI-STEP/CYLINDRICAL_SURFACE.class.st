@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-CYLINDRICAL_SURFACE class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 CYLINDRICAL_SURFACE >> aSurfaceWithBounds: cFACE_BOUND [
 

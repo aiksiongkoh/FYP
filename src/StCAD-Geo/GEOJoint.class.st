@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOJoint >> cut [
 	container cutJoint: self.

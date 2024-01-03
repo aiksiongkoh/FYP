@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDCollisionIntegrator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDCollisionIntegrator >> assignEquationNumbers [
 	"Equation order is qdot, sdot, udot, Plambar, Plam."

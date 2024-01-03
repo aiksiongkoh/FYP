@@ -10,28 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDispCompIecJecKeqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDispCompIecJecKeqc class >> withFrmI: afrmI frmJ: afrmJ frmK: afrmK axisK: integer [ 
-	^(afrmI isMemberOf: MbDEndFramec)
-		& (afrmJ isMemberOf: MbDEndFramec) & (afrmK isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				frmK: afrmK
-				axisK: integer]
-		ifFalse: [nil]
-]
-
 { #category : #accessing }
 MbDDispCompIecJecKeqc >> axisK [
 	^axisK

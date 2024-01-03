@@ -12,16 +12,6 @@ Class {
 	#category : #'StCAD-MbD-MbDReaction'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDReactionTorqueMagIp class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDReactionTorqueMagIp >> calcPostDynCorrectorIteration [
 	| aTIeJtO uTIeJtO |

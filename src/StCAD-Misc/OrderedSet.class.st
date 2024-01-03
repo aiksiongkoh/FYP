@@ -8,35 +8,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'instance creation' }
-OrderedSet class >> new [
-	^self newIdentity: 10
-]
-
-{ #category : #'instance creation' }
-OrderedSet class >> new: n [ 
-	^self newIdentity: n
-]
-
-{ #category : #'instance creation' }
-OrderedSet class >> newEquality: size [ 
-	^(super new: size) forEquality
-]
-
-{ #category : #'instance creation' }
-OrderedSet class >> newIdentity: size [ 
-	^(super new: size) forIdentity
-]
-
-{ #category : #'VisualWorks metadata' }
-OrderedSet class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-	)
-
-]
-
 { #category : #adding }
 OrderedSet >> addFirst: newObject [ 
 	(self includes: newObject) ifFalse: [super addFirst: newObject].

@@ -13,16 +13,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicCurveOnSurface class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #'As yet unclassified' }
 BasicCurveOnSurface >> aJun3dPolylineu: u [ 
 	| acPoint |

@@ -7,29 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'instance creation' }
-ForTorVector class >> onFrmI: efrmI andFrmJ: efrmJ [ 
-	^self new onFrmI: efrmI andFrmJ: efrmJ
-]
-
-{ #category : #'instance creation' }
-ForTorVector class >> onFrmI: efrmI andFrmJ: efrmJ wrtFrmK: efrmK [ 
-	^self new
-		onFrmI: efrmI
-		andFrmJ: efrmJ
-		wrtFrmK: efrmK
-]
-
-{ #category : #'VisualWorks metadata' }
-ForTorVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 ForTorVector >> aFTIeO [
 	^components inject: (FullColumn zero: 3) into: [:aFTIeO :comp | aFTIeO + comp aFTIeO]

@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-COORDINATED_UNIVERSAL_TIME_OFFSET class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 COORDINATED_UNIVERSAL_TIME_OFFSET >> hour_offset [
 	^hour_offset

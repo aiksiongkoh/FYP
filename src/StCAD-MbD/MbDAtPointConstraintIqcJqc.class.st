@@ -10,27 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAtPointConstraintIqcJqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDAtPointConstraintIqcJqc class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	^(afrmI isMemberOf: MbDEndFrameqc)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				axis: aaxis]
-		ifFalse: [nil]
-]
-
 { #category : #accessing }
 MbDAtPointConstraintIqcJqc >> addToJointForceJ: col [ 
 	col at: axis plusNumber: lam

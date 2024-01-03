@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-OPEN_SHELL class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #ops }
 OPEN_SHELL >> buildIn: aNMTModel [ 
 	| aOutsideRegion |

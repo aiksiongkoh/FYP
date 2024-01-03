@@ -8,29 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEOFunctionIJKi class >> functionTemplate [
-	^self functionSymbol , '(geoIJ, I, 1)'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOFunctionIJKi class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #'instance creation' }
-GEOFunctionIJKi class >> with: geoIJ with: markerk with: axis [ 
-	^super new
-		geoIJ: geoIJ
-		markerK: markerk
-		axisK: axis
-]
-
 { #category : #'StCAD-UI' }
 GEOFunctionIJKi >> cadStringOn: aStream [ 
 	aStream nextPutAll: self class functionSymbol.

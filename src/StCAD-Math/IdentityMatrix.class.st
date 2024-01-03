@@ -7,22 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySpecial'
 }
 
-{ #category : #'instance creation' }
-IdentityMatrix class >> new: aInteger [ 
-	^(super basicNew: 0)
-		initialize: aInteger
-]
-
-{ #category : #'VisualWorks metadata' }
-IdentityMatrix class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'basic ops *' }
 IdentityMatrix >> * anObject [ 
 	^anObject

@@ -9,26 +9,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOSurfaceMarker class >> nameString [
-	^'SurfaceMarker'
-]
-
-{ #category : #'instance creation' }
-GEOSurfaceMarker class >> newOnFace: face [ 
-	^super new face: face
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOSurfaceMarker class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOSurfaceMarker >> aAeqnfat: col [ 
 	| prmemps tem1 tem2 iem kem jem aAme |
 	prmemps := rFfFSurface pvalueps: col.

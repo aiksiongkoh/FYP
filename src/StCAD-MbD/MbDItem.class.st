@@ -38,33 +38,6 @@ Class {
 }
 
 { #category : #accessing }
-MbDItem class >> TheMbDSystem [
-	^TheMbDSystem
-]
-
-{ #category : #accessing }
-MbDItem class >> clearTheMbDSystem [
-	"StCAD.StMbD.MbDItem clearTheMbDSystem."
-
-	TheMbDSystem := nil.
-	ObjectMemory garbageCollect
-]
-
-{ #category : #'instance creation' }
-MbDItem class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDItem class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #accessing }
 MbDItem >> TheMbDSystem [
 	^TheMbDSystem
 ]

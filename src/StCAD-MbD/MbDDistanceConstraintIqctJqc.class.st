@@ -12,28 +12,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDistanceConstraintIqctJqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDistanceConstraintIqctJqc class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	^(afrmI isMemberOf: MbDEndFrameqct) | (afrmI isMemberOf: MbD2EndFrameqct) 
-		& (afrmJ isMemberOf: MbDEndFrameqc) 
-			ifTrue: 
-				[self new 
-					withFrmI: afrmI
-					frmJ: afrmJ
-					axis: aaxis]
-			ifFalse: [nil]
-]
-
 { #category : #accIC }
 MbDDistanceConstraintIqctJqc >> fillAccICIterError: col [ 
 	| qEdotI sum qXdotI qXdotJ qEdotJ |

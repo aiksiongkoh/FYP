@@ -9,28 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDirectionCosineConstraintIqcJc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDirectionCosineConstraintIqcJc class >> withFrmI: afrmI frmJ: afrmJ axisI: aaxisI axisJ: aaxisJ [ 
-	^(afrmI isMemberOf: MbDEndFrameqc)
-		& (afrmJ isMemberOf: MbDEndFramec)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				axisI: aaxisI
-				axisJ: aaxisJ]
-		ifFalse: [nil]
-]
-
 { #category : #accessing }
 MbDDirectionCosineConstraintIqcJc >> addToJointTorqueI: jointTorque [ 
 	| aBOIp lampGpE c2Torque |

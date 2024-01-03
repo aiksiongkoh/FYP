@@ -11,28 +11,6 @@ Class {
 	#category : #'StCAD-Basic'
 }
 
-{ #category : #utilities }
-CoordinateFrame class >> r_theta_z_xyz: xyz [
-
-	| x y z |
-	x := xyz at: 1.
-	y := xyz at: 2.
-	z := xyz at: 3.
-	^ StCAD_Math_MathArray
-		  with: (x * x + (y * y)) sqrt
-		  with: (Double arcTan0to2piY: y overX: x)
-		  with: z "VW_TRANSLATION:StCAD.Math.MathArray:StCAD_Math_MathArray"
-]
-
-{ #category : #utilities }
-CoordinateFrame class >> xyz_r: r theta: theta z: z [
-
-	^ StCAD_Math_FullColumn
-		  with: r * theta cos
-		  with: r * theta sin
-		  with: z "VW_TRANSLATION:StCAD.Math.FullColumn:StCAD_Math_FullColumn"
-]
-
 { #category : #accessing }
 CoordinateFrame >> aAFf [
 

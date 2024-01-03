@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDJoint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDInPlaneJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDInPlaneJoint >> createTranslationConstraint [
 	| constraint |

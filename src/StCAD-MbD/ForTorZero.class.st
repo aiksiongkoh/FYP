@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'VisualWorks metadata' }
-ForTorZero class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'input-output' }
 ForTorZero >> aFTIeO [
 	^(FullColumn zero: 3)

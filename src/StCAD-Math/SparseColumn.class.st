@@ -5,16 +5,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySparse'
 }
 
-{ #category : #'VisualWorks metadata' }
-SparseColumn class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'ops on self -' }
 SparseColumn >> at: i minusFullColumn: aFullColumn [ 
 	^super at: i minusFullVector: aFullColumn

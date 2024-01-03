@@ -25,16 +25,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDEndFrameqct class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 MbDEndFrameqct >> aA [
 	"Dummy method template.  This was installed by the debugger

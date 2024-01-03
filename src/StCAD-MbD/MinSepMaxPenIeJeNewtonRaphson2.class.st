@@ -10,16 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MinSepMaxPenIeJeNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #solving }
 MinSepMaxPenIeJeNewtonRaphson2 >> askSystemToUpdate [
 	system endFramesCalc.

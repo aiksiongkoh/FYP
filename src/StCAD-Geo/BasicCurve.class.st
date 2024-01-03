@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicCurve class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 BasicCurve >> cPoint_n: n [ 
 	| delta answer |

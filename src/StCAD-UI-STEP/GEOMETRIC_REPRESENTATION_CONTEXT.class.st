@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOMETRIC_REPRESENTATION_CONTEXT class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 GEOMETRIC_REPRESENTATION_CONTEXT >> coordinate_space_dimension [
 	^coordinate_space_dimension

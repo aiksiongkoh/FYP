@@ -1,5 +1,5 @@
 "
-	J	Jq	Js	Jt	Jqs	Jqt	Jst Jqst
+J	Jq	Js	Jt	Jqs	Jqt	Jst Jqst
 I	x	-	-	-	-	-	-	-
 Iq	x	x	-	-	-	-	-	-
 Is	x	x	x	-	-	-	-	-
@@ -56,16 +56,6 @@ Class {
 	],
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
-
-{ #category : #'VisualWorks metadata' }
-MbDKinematicIeJe class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
 
 { #category : #calc }
 MbDKinematicIeJe >> differentiateWRT: variable [ 

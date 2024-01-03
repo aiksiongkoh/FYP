@@ -6,13 +6,3 @@ Class {
 	],
 	#category : #'StCAD-Geo'
 }
-
-{ #category : #'VisualWorks metadata' }
-BasicSurfaceOfRevolution class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]

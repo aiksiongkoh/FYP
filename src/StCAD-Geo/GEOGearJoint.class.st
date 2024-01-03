@@ -10,26 +10,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOGearJoint class >> mbdClass [
-	^MbDGearJoint
-]
-
-{ #category : #accessing }
-GEOGearJoint class >> nameString [
-	^'GearJoint'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOGearJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOGearJoint >> aConstant [
 	^aConstant
 ]

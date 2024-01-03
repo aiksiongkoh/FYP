@@ -6,13 +6,3 @@ Class {
 	],
 	#category : #'StCAD-Geo-GEO'
 }
-
-{ #category : #'VisualWorks metadata' }
-GEO2CurveMarker class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]

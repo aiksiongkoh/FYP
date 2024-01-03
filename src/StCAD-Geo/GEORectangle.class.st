@@ -8,21 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEORectangle class >> minCorner: min maxCorner: max [ 
-	^self new minCorner: min maxCorner: max
-]
-
-{ #category : #'VisualWorks metadata' }
-GEORectangle class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #testing }
 GEORectangle >> isClosed [
 	^true

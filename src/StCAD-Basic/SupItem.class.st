@@ -7,15 +7,6 @@ Class {
 	#category : #'StCAD-Basic'
 }
 
-{ #category : #'VisualWorks metadata' }
-SupItem class >> visualWorksMetadata [
-
-	^ #(
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 SupItem >> aSup: anObject [ 
 	aSup := anObject

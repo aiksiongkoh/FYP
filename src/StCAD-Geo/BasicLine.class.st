@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #comparing }
 BasicLine >> = aObject [ 
 	^self == aObject or: 

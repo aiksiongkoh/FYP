@@ -4,59 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'binary storage' }
-Function class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	"Remove the instance variable 'value' from StMSymbolic."
-	"Remove the instance variable 'dependents' from StMFunction."
-
-	oldVersion == nil
-		ifTrue: 
-			[| inst |
-			inst := self basicNew.
-			^
-			[:oldObj | 
-			| new |
-			new := Array new: oldObj size - 2.
-			new
-				replaceFrom: 1
-				to: new size
-				with: oldObj
-				startingAt: 3.
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'binary storage' }
-Function class >> binaryRepresentationVersion [
-	^30
-]
-
-{ #category : #accessing }
-Function class >> functionSymbol [
-	self subclassResponsibility
-]
-
-{ #category : #accessing }
-Function class >> functionTemplate [
-	self subclassResponsibility
-]
-
-{ #category : #'instance creation' }
-Function class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-Function class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #comparing }
 Function >> = anObject [ 
 	^self class == anObject class

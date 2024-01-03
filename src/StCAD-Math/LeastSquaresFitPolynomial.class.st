@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-LeastSquaresFitPolynomial class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 LeastSquaresFitPolynomial >> calcCoeffs [
 	| orderPlusOne twoOrder xspower xspowerSum matrix vector rowi power element coeffs |

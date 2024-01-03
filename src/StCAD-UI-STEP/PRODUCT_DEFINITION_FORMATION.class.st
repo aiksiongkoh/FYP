@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-PRODUCT_DEFINITION_FORMATION class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #'As yet unclassified' }
 PRODUCT_DEFINITION_FORMATION >> aPRODUCT [
 	^of_product aPRODUCT

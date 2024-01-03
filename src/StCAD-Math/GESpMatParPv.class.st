@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-GESpMatParPv class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'back substitution' }
 GESpMatParPv >> backSubstituteIntoDU [
 	"DU is upper triangular with nonzero diagonals."

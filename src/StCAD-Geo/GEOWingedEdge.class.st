@@ -14,16 +14,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOWingedEdge class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOWingedEdge >> edge11 [
 	^edge11

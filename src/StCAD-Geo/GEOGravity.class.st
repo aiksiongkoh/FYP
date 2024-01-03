@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOGravity class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #'initialize-release' }
 GEOGravity >> asTreeNode [
 	| answer |

@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'VisualWorks metadata' }
-ForTorActionKComp class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 ForTorActionKComp >> aAjOKe [
 	^aAjOKe

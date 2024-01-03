@@ -8,26 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #accessing }
-FunctionXY class >> functionTemplate [
-	^self functionSymbol , '(x, y)'
-]
-
-{ #category : #'VisualWorks metadata' }
-FunctionXY class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-FunctionXY class >> with: xx with: yy [ 
-	^super new x: xx y: yy
-]
-
 { #category : #comparing }
 FunctionXY >> = anObject [ 
 	^super = anObject and: [x = anObject x and: [y = anObject y]]

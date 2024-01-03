@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDCollisionDerivativeICNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #solving }
 MbDCollisionDerivativeICNewtonRaphson2 >> askSystemToUpdate [
 	"Do nothing."

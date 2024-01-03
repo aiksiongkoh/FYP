@@ -20,16 +20,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-GESpMat class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'forward elimination' }
 GESpMat >> privateIndicesOfNonZerosInPivotRow: pivotRow withoutKey: discardKey [ 
 	"pivotRow is aStMSparseRow."

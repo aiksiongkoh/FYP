@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOForceIJKi class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOForceIJKi >> dimension [
 	^'force'

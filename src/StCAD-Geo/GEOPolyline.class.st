@@ -16,48 +16,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #BOSS }
-GEOPolyline class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	| newGEOPolyline rfpointsf |
-	oldVersion isNil ifTrue: [^
-		[:oldGEOPolyline | 
-		newGEOPolyline := self new.
-		newGEOPolyline privateSetEventTable: (oldGEOPolyline at: 1).
-		newGEOPolyline container: (oldGEOPolyline at: 2).
-		newGEOPolyline setrefFrame: (oldGEOPolyline at: 3).
-		newGEOPolyline setrfpointsf: (rfpointsf := oldGEOPolyline at: 4).
-		newGEOPolyline isClosed: (rfpointsf at: 1)
-				= (rfpointsf at: rfpointsf size).
-		oldGEOPolyline become: newGEOPolyline]]
-]
-
-{ #category : #BOSS }
-GEOPolyline class >> binaryRepresentationVersion [
-	"rfpointsf replaces points."
-
-	^20
-]
-
-{ #category : #'instance creation' }
-GEOPolyline class >> refFrame: refFrm rFpointsF: pts [ 
-	^super new refFrame: refFrm rFpointsF: pts
-]
-
-{ #category : #'instance creation' }
-GEOPolyline class >> start: start end: end [ 
-	^self new start: start end: end
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOPolyline class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOPolyline >> aBoundingBox [
 	^self triggerEvent: #getBoundingBox

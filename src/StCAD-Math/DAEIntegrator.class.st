@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathIntegrator'
 }
 
-{ #category : #'VisualWorks metadata' }
-DAEIntegrator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #run }
 DAEIntegrator >> checkForDiscontinuity [
 	system checkForDiscontinuity

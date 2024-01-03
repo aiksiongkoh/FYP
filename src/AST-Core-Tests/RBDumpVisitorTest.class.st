@@ -2,30 +2,28 @@
 SUnit tests for the RBDumpVisitor visit, called by the #dump method on RBProgramNodes.
 "
 Class {
-	#name : 'RBDumpVisitorTest',
-	#superclass : 'RBParseTreeTest',
-	#category : 'AST-Core-Tests-Visitors',
-	#package : 'AST-Core-Tests',
-	#tag : 'Visitors'
+	#name : #RBDumpVisitorTest,
+	#superclass : #RBParseTreeTest,
+	#category : #'AST-Core-Tests-Visitors'
 }
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> compiler [
 
 	^ Smalltalk compiler
 ]
 
-{ #category : 'tests - api' }
+{ #category : #'test - api' }
 RBDumpVisitorTest >> testAPI [
 
 	| node |
 	node := self parseExpression: 'self foo'.
 	self
 		assert: (RBDumpVisitor new visit: node) contents
-		equals: 'RBMessageNode receiver: (RBVariableNode named: #self) selector: #foo'
+		equals:  'RBMessageNode receiver: (RBVariableNode named: #self) selector: #foo'
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testArrayNodeDump [
 
 	| node dumpedNode |
@@ -46,7 +44,7 @@ RBDumpVisitorTest >> testArrayNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testAssignmentNodeDump [
 
 	| node dumpedNode |
@@ -58,7 +56,7 @@ RBDumpVisitorTest >> testAssignmentNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testBlockNodeDump [
 
 	| node dumpedNode |
@@ -87,7 +85,7 @@ RBDumpVisitorTest >> testBlockNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testCascadeNodeDump [
 
 	| node dumpedNode |
@@ -99,7 +97,7 @@ RBDumpVisitorTest >> testCascadeNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testDumpOnObjectMethod [
 
 	| node dumpedNode |
@@ -111,7 +109,7 @@ RBDumpVisitorTest >> testDumpOnObjectMethod [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testDumpOnSelfClassMethods [
 
 	| methods node dumpedNode |
@@ -129,7 +127,7 @@ RBDumpVisitorTest >> testDumpOnSelfClassMethods [
 		self assert: node equals: dumpedNode ]
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testErrorNodeDump [
 
 	| node dumpedNode |
@@ -141,7 +139,7 @@ RBDumpVisitorTest >> testErrorNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testGlobalNodeDump [
 
 	| node dumpedNode |
@@ -156,7 +154,7 @@ RBDumpVisitorTest >> testGlobalNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testLiteralArrayNodeDump [
 
 	| node dumpedNode |
@@ -168,7 +166,7 @@ RBDumpVisitorTest >> testLiteralArrayNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testLiteralValueNodeDump [
 
 	| node dumpedNode |
@@ -213,7 +211,7 @@ RBDumpVisitorTest >> testLiteralValueNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testMessageNodeDump [
 
 	| node dumpedNode |
@@ -250,7 +248,7 @@ RBDumpVisitorTest >> testMessageNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testMethodNodeDump [
 
 	| node dumpedNode |
@@ -262,7 +260,7 @@ RBDumpVisitorTest >> testMethodNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testPragmaNodeDump [
 
 	| node dumpedNode |
@@ -276,7 +274,7 @@ RBDumpVisitorTest >> testPragmaNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testReturnNodeDump [
 
 	| node dumpedNode |
@@ -288,7 +286,7 @@ RBDumpVisitorTest >> testReturnNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testSelfNodeDump [
 
 	| node dumpedNode |
@@ -300,7 +298,7 @@ RBDumpVisitorTest >> testSelfNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testSequenceNodeDump [
 
 	| node dumpedNode |
@@ -312,7 +310,7 @@ RBDumpVisitorTest >> testSequenceNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testSuperNodeDump [
 
 	| node dumpedNode |
@@ -324,7 +322,7 @@ RBDumpVisitorTest >> testSuperNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testThisContextNodeDump [
 
 	| node dumpedNode |
@@ -336,7 +334,7 @@ RBDumpVisitorTest >> testThisContextNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> testVariableNodeDump [
 
 	| node dumpedNode |
@@ -348,7 +346,7 @@ RBDumpVisitorTest >> testVariableNodeDump [
 	self assert: node printString equals: dumpedNode printString
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBDumpVisitorTest >> uselessMethod [
 	"used for test"
 ]

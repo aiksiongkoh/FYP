@@ -27,16 +27,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-SmoothSineStep class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 SmoothSineStep >> transitionFunctionx1: x1 y1: y1 x2: x2 y2: y2 [ 
 	| c A ome phi |

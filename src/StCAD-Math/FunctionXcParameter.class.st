@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-FunctionXcParameter class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #comparing }
 FunctionXcParameter >> = anObject [ 
 	^super = anObject and: [x = anObject x]

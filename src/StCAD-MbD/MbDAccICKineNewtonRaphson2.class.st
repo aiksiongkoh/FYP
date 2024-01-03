@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAccICKineNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDAccICKineNewtonRaphson2 >> initializeGlobally [
 	super initializeGlobally.

@@ -3,19 +3,12 @@ RBBinarySelectorToken is the first-class representation of a binary selector (e.
 
 "
 Class {
-	#name : 'RBBinarySelectorToken',
-	#superclass : 'RBValueToken',
-	#category : 'AST-Core-Tokens',
-	#package : 'AST-Core',
-	#tag : 'Tokens'
+	#name : #RBBinarySelectorToken,
+	#superclass : #RBValueToken,
+	#category : #'AST-Core-Tokens'
 }
 
-{ #category : 'testing' }
+{ #category : #testing }
 RBBinarySelectorToken >> isBinary [
 	^true
-]
-
-{ #category : 'testing' }
-RBBinarySelectorToken >> isBinary: aString [
-	^ value = aString
 ]

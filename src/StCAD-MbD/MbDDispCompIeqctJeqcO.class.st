@@ -9,27 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDispCompIeqctJeqcO class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDispCompIeqctJeqcO class >> withFrmI: afrmI frmJ: afrmJ axis: i [ 
-	^(afrmI isMemberOf: MbDEndFrameqct)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				axis: i]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDDispCompIeqctJeqcO >> calcPostDynCorrectorIteration [
 	"ppriIeJeOpEIpEI is not a constant now."

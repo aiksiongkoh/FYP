@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDVelICSolver2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDVelICSolver2 >> assignEquationNumbers [
 	"Equation order is q,s,u,lamb,lam."

@@ -4,25 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-Step class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Step class >> with: variable x1: xx1 y1: yy1 y2: yy2 [ 
-	^super new
-		x: variable
-		x1: xx1
-		y1: yy1
-		y2: yy2
-]
-
 { #category : #'initialize-release' }
 Step >> x: arg x1: argx1 y1: argy1 y2: argy2 [ 
 	| x1 y1 y2 |

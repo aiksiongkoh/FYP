@@ -9,29 +9,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicUserFunction class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-BasicUserFunction class >> with: string myUnit: argUnit units: argUnits [ 
-	^(super new)
-		funcText: string
-		myUnit: argUnit
-		units: argUnits; yourself
-]
-
-{ #category : #'instance creation' }
-BasicUserFunction class >> with: string units: argUnits [ 
-	^(super new) funcText: string units: argUnits; yourself
-]
-
 { #category : #accessing }
 BasicUserFunction >> funcText [
 	^funcText

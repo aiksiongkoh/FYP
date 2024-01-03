@@ -12,16 +12,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOPosVelAccData class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOPosVelAccData >> aAOf [
 	aAOf == nil ifTrue: [self aAOf: (FullMatrix identity: 3)].

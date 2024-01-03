@@ -13,16 +13,6 @@ Class {
 	#category : #'StCAD-MbD-MbDReaction'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDReactionTorqueCompIpKe class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDReactionTorqueCompIpKe >> calcPostDynCorrectorIteration [
 	| aAjOKe pAjOKepEK |

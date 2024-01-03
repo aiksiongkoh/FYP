@@ -12,16 +12,6 @@ Class {
 	#category : #'StCAD-MbD-MbDMotion'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDPrescribedMotion class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDPrescribedMotion >> connectsI: mkrII toJ: mkrJJ [ 
 	| eFrmqct |

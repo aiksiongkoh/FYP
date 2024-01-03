@@ -16,21 +16,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #testing }
-GESpMatFullPv class >> isAbstractClass [
-	^false
-]
-
-{ #category : #'VisualWorks metadata' }
-GESpMatFullPv class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'back substitution' }
 GESpMatFullPv >> backSubstituteIntoDU [
 	"Use colOrder to get DU in upper triangular with nonzero diagonals."

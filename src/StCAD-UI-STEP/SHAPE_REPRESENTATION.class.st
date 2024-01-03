@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-SHAPE_REPRESENTATION class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #testing }
 SHAPE_REPRESENTATION >> = aObject [ 
 	"Testing an alternative for Object>>="

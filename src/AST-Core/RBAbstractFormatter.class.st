@@ -2,14 +2,7 @@
 I am the abstract class to find the formatters in the system.
 "
 Class {
-	#name : 'RBAbstractFormatter',
-	#superclass : 'RBProgramNodeVisitor',
-	#category : 'AST-Core-Formatter',
-	#package : 'AST-Core',
-	#tag : 'Formatter'
+	#name : #RBAbstractFormatter,
+	#superclass : #RBProgramNodeVisitor,
+	#category : #'AST-Core-Formatter'
 }
-
-{ #category : 'as yet unclassified' }
-RBAbstractFormatter class >> priority [
-	^ self subclassResponsibility
-]

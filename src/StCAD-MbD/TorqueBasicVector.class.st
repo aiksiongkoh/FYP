@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDTorque'
 }
 
-{ #category : #'VisualWorks metadata' }
-TorqueBasicVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 TorqueBasicVector >> calcPostDynCorrectorIteration [
 	twoBT := endFrame partFrame aB transpose times: 2.0d

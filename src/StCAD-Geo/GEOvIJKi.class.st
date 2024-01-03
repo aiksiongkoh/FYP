@@ -5,21 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOvIJKi class >> functionSymbol [
-	^'vIJKi'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOvIJKi class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOvIJKi >> dataSeries [
 	^geoIJ dataSeriesForChart collect: [:kineIkineJ | kineIkineJ perform: 'vIJ' , markerK , axisK printString]
 ]

@@ -16,24 +16,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDistIeqcJeqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDistIeqcJeqc class >> withFrmI: afrmI frmJ: afrmJ [ 
-	^(afrmI isMemberOf: MbDEndFrameqc)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new withFrmI: afrmI frmJ: afrmJ]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDDistIeqcJeqc >> calcPrivate [
 	| prIeJeOpEJ pprIeJeOpEJpEJ pprIeJepXIipXJ prIeJepXIi element pprIeJepEIipXJ prIeJepEIi mprIeJeOpEIiT pprIeJepXJipXJ prIeJepXJi pprIeJepXIipEJ prIeJeOipEJ pprIeJepEIipEJ pprIeJepXJipEJ pprIeJepEJipEJ prIeJepEJi pprIeJeOpEJipEJ prIeJeOpEJiT uIeJeOT |

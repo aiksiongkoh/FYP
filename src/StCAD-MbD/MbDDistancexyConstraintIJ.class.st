@@ -8,25 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDistancexyConstraintIJ class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDistancexyConstraintIJ class >> withFrmI: afrmI frmJ: afrmJ [ 
-	| instance |
-	self allSubclasses do: 
-			[:subclass | 
-			instance := subclass withFrmI: afrmI frmJ: afrmJ.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDDistancexyConstraintIJ >> calcPostDynCorrectorIteration [
 	| x y |

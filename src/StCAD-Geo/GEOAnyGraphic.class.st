@@ -7,24 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOAnyGraphic class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getbounds;
-		add: #refFrameChanged;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOAnyGraphic class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOAnyGraphic >> aBoundingBox [
 	^self triggerEvent: #getBoundingBox

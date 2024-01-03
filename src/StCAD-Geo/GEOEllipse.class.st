@@ -8,24 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOEllipse class >> origin: origin xRadius: xr yRadius: yr [ 
-	^super new
-		origin: origin
-		xRadius: xr
-		yRadius: yr
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOEllipse class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #testing }
 GEOEllipse >> isClosed [
 	^true

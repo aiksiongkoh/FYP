@@ -7,22 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySpecial'
 }
 
-{ #category : #'instance creation' }
-ZeroVector class >> new: aInteger [ 
-	^(super basicNew: 0)
-		initialize: aInteger
-]
-
-{ #category : #'VisualWorks metadata' }
-ZeroVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #converting }
 ZeroVector >> asZeroVector [
 	^self

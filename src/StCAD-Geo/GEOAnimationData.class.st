@@ -12,21 +12,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOAnimationData class >> new: integer [ 
-	^super new initialize: integer
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOAnimationData class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOAnimationData >> framesPerSecond [
 	^framesPerSecond

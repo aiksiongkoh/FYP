@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOFunction class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.UI'
-	)
-
-]
-
 { #category : #accessing }
 GEOFunction >> container [
 	^container

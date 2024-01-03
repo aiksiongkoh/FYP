@@ -8,31 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathIntegrator'
 }
 
-{ #category : #'class initialization' }
-Integrator class >> initSignals [
-	IntegratorError notifierString: #'StM: Integrator error'; nameClass: self message: #integratorError.
-	DiscontinuityError notifierString: #'StM: A discontinuity is found.'; nameClass: self message: #discontinuityError.
-	TooManyTriesError notifierString: #'StM: Number of tries exceeded.'; nameClass: self message: #tooManyTriesError.
-	TooSmallStepSizeError notifierString: #'StM: Step size is too small.'; nameClass: self message: #tooSmallStepSizeError
-]
-
-{ #category : #'class initialization' }
-Integrator class >> initialize [
-	"StMIntegrator initialize."
-
-	self initSignals
-]
-
-{ #category : #'VisualWorks metadata' }
-Integrator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 Integrator >> direction [
 	^direction

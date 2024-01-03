@@ -1,6 +1,5 @@
 "
-
-	Find the minimum distance between two lines. 
+Find the minimum distance between two lines. 
 	Line is a(ap) = a0 + ap*ad. 
 	Line is b(bp) = b0 + bp*bd. 
 	Minimize a(ap) - b(bp). 
@@ -28,40 +27,6 @@ Class {
 	],
 	#category : #'StCAD-Geo'
 }
-
-{ #category : #'instance creation' }
-LineLine class >> a0: a3DPoint aDir: aDir b0: b3DPoint bDir: bDir tolParallel: tolParallel tolDist: tolDist [ 
-	^(super new)
-		a0: a3DPoint
-			aDir: aDir
-			b0: b3DPoint
-			bDir: bDir
-			tolParallel: tolParallel
-			tolDist: tolDist;
-		calc;
-		yourself
-]
-
-{ #category : #'instance creation' }
-LineLine class >> aStartPoint: aStartPoint aEndPoint: aEndPoint bStartPoint: bStartPoint bEndPoint: bEndPoint tolParallel: tolParallel tolDist: tolDist [ 
-	^self 
-		a0: aStartPoint
-		aDir: aEndPoint - aStartPoint
-		b0: bStartPoint
-		bDir: bEndPoint - bStartPoint
-		tolParallel: tolParallel
-		tolDist: tolDist
-]
-
-{ #category : #'VisualWorks metadata' }
-LineLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
 
 { #category : #accessing }
 LineLine >> a0 [

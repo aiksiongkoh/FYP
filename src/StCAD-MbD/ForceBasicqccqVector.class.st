@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'VisualWorks metadata' }
-ForceBasicqccqVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #dynamic }
 ForceBasicqccqVector >> fillpFpy: mat aFTO: aFTO [ 
 	| pprOeOpEpEaction iqEm1 iqEactionm1 pprOeOpEpEactioni mati pprOeOpEpEactionij |

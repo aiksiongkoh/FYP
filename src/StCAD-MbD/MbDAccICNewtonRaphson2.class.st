@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAccICNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #solving }
 MbDAccICNewtonRaphson2 >> isConverged [
 	^self isConvergedToNumericalLimit

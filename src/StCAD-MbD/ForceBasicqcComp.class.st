@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'VisualWorks metadata' }
-ForceBasicqcComp class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 ForceBasicqcComp >> calcPostDynCorrectorIteration [
 	"rpep is not a constant for aMbDEndFrameqccq, qcs or qct."

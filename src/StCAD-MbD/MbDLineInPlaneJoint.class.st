@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDJoint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDLineInPlaneJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 MbDLineInPlaneJoint >> classString [
 	"Used to access the descriptive name of the joint."

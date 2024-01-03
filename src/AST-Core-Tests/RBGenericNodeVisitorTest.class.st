@@ -1,12 +1,10 @@
 Class {
-	#name : 'RBGenericNodeVisitorTest',
-	#superclass : 'RBParseTreeTest',
-	#category : 'AST-Core-Tests-Visitors',
-	#package : 'AST-Core-Tests',
-	#tag : 'Visitors'
+	#name : #RBGenericNodeVisitorTest,
+	#superclass : #RBParseTreeTest,
+	#category : 'AST-Core-Tests-Visitors'
 }
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBGenericNodeVisitorTest >> testVisitAnySatisfy [
 	| result tree |
 	tree := self parseExpression: 'Object new'.
@@ -16,7 +14,7 @@ RBGenericNodeVisitorTest >> testVisitAnySatisfy [
 	self deny: result
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBGenericNodeVisitorTest >> testVisitDetect [
 	| node tree |
 	tree := self parseExpression: 'Object new'.
@@ -24,7 +22,7 @@ RBGenericNodeVisitorTest >> testVisitDetect [
 	self  assert: node isMessage
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBGenericNodeVisitorTest >> testVisitDetectIfNone [
 	| result tree |
 	tree := self parseExpression: 'Object new'.
@@ -32,7 +30,7 @@ RBGenericNodeVisitorTest >> testVisitDetectIfNone [
 	self assert: result equals: #none
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBGenericNodeVisitorTest >> testVisitNoneSatisfy [
 	| result tree |
 	tree := self parseExpression: 'Object new'.
@@ -42,7 +40,7 @@ RBGenericNodeVisitorTest >> testVisitNoneSatisfy [
 	self assert: result
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 RBGenericNodeVisitorTest >> testVisitSelect [
 	| result tree |
 	tree := self parseExpression: 'Object new'.

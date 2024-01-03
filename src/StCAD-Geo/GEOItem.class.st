@@ -4,20 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOItem class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOItem class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #'initialize-release' }
 GEOItem >> initialize [
 	self subclassResponsibility

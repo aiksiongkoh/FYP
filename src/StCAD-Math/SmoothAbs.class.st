@@ -17,21 +17,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-SmoothAbs class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-SmoothAbs class >> with: var epsilon: xx1 [ 
-	^super new x: var epsilon: xx1
-]
-
 { #category : #'initialize-release' }
 SmoothAbs >> x: arg epsilon: eps [ 
 	| a b c coeffs epsilon |

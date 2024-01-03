@@ -8,13 +8,3 @@ Class {
 	],
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
-
-{ #category : #'VisualWorks metadata' }
-MbDAccCompIeqcJeqcOKeqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]

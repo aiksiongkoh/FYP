@@ -4,41 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'binary storage' }
-Constant class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	"Remove the instance variable 'value dependents x name'."
-
-	"Remove the instance variable 'name value'."
-
-	oldVersion == nil 
-		ifTrue: 
-			[| inst |
-			inst := self basicNew.
-			^
-			[:oldObj | 
-			| new |
-			new := Array new: 2.
-			new at: 2 put: (oldObj at: 1).
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'VisualWorks metadata' }
-Constant class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Constant class >> with: arg [ 
-	^self basicNew value: arg
-]
-
 { #category : #comparing }
 Constant >> = anObject [ 
 	"Answer whether the receiver and the argument represent the same shape"

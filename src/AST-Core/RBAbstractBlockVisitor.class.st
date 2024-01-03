@@ -4,23 +4,21 @@ Subclasses provide specific node type capabilties
 
 "
 Class {
-	#name : 'RBAbstractBlockVisitor',
-	#superclass : 'RBProgramNodeVisitor',
+	#name : #RBAbstractBlockVisitor,
+	#superclass : #RBProgramNodeVisitor,
 	#instVars : [
 		'visitBlock'
 	],
-	#category : 'AST-Core-Visitors',
-	#package : 'AST-Core',
-	#tag : 'Visitors'
+	#category : 'AST-Core-Visitors'
 }
 
-{ #category : 'testing' }
+{ #category : #testing }
 RBAbstractBlockVisitor class >> isAbstract [
 
 	^ self == RBAbstractBlockVisitor
 ]
 
-{ #category : 'enumerating' }
+{ #category : #enumerating }
 RBAbstractBlockVisitor class >> visit: aTree anySatisfy: aBlock [
 	self
 		visit: aTree
@@ -28,13 +26,13 @@ RBAbstractBlockVisitor class >> visit: aTree anySatisfy: aBlock [
 	^ false
 ]
 
-{ #category : 'enumerating' }
+{ #category : #enumerating }
 RBAbstractBlockVisitor class >> visit: aTree detect: aBlock [
 
 	^self visit: aTree detect: aBlock ifNone: [ NotFound signalFor: aBlock ]
 ]
 
-{ #category : 'enumerating' }
+{ #category : #enumerating }
 RBAbstractBlockVisitor class >> visit: aTree detect: aBlock ifNone: anErrorBlock [
 	self
 		visit: aTree
@@ -42,14 +40,14 @@ RBAbstractBlockVisitor class >> visit: aTree detect: aBlock ifNone: anErrorBlock
 	^ anErrorBlock value
 ]
 
-{ #category : 'enumerating' }
+{ #category : #enumerating }
 RBAbstractBlockVisitor class >> visit: aTree do: aBlock [
 	^self new
 		visitBlock: aBlock;
 		visitNode: aTree
 ]
 
-{ #category : 'enumerating' }
+{ #category : #enumerating }
 RBAbstractBlockVisitor class >> visit: aTree noneSatisfy: aBlock [
 	self
 		visit: aTree
@@ -57,7 +55,7 @@ RBAbstractBlockVisitor class >> visit: aTree noneSatisfy: aBlock [
 	^ true
 ]
 
-{ #category : 'enumerating' }
+{ #category : #enumerating }
 RBAbstractBlockVisitor class >> visit: aTree select: aBlock [
 	| result |
 	result := OrderedCollection new.
@@ -66,12 +64,12 @@ RBAbstractBlockVisitor class >> visit: aTree select: aBlock [
 	^result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBAbstractBlockVisitor >> visitBlock [
 	^ visitBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBAbstractBlockVisitor >> visitBlock: anObject [
 	visitBlock := anObject
 ]

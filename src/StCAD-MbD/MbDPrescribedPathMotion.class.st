@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDMotion'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDPrescribedPathMotion class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 MbDPrescribedPathMotion >> classString [
 	"Used to access the descriptive name of the joint."

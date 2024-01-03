@@ -9,25 +9,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'instance creation' }
-ThreePoint class >> a1Point: a1Point a2Point: a2Point a3Point: a3Point [ 
-	^(self new)
-		a1Point: a1Point;
-		a2Point: a2Point;
-		a3Point: a3Point;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-ThreePoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 ThreePoint >> a1Point [
 	^a1Point

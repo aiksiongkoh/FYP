@@ -8,26 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDSmallAnglexIecJec class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDSmallAnglexIecJec class >> withFrmI: afrmI frmJ: afrmJ [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass withFrmI: afrmI frmJ: afrmJ.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDSmallAnglexIecJec >> calcPostDynCorrectorIteration [
 	thex := aA23IeJe value negated

@@ -2,26 +2,24 @@
 I'm an abstract root class of many balloon-specific paints
 "
 Class {
-	#name : 'AthensBalloonPaint',
-	#superclass : 'AthensPaint',
-	#category : 'Athens-Balloon-Paint',
-	#package : 'Athens-Balloon',
-	#tag : 'Paint'
+	#name : #AthensBalloonPaint,
+	#superclass : #AthensPaint,
+	#category : 'Athens-Balloon-Paint'
 }
 
-{ #category : 'testing' }
+{ #category : #testing }
 AthensBalloonPaint class >> isAbstract [
 
 	^ self == AthensBalloonPaint
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 AthensBalloonPaint >> asAthensPaintOn: surf [
 
 	^ self
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 AthensBalloonPaint >> asStrokePaintOn: aCanvas [
 
 	^ AthensBalloonStrokePaint new fillPaint: self

@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-UNCERTAINTY_MEASURE_WITH_UNIT class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 UNCERTAINTY_MEASURE_WITH_UNIT >> description [
 	^description

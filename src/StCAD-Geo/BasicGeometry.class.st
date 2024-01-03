@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicGeometry class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 BasicGeometry >> pprFpFpsps_s: s [ 
 	^self pprfpfpsps_s: s

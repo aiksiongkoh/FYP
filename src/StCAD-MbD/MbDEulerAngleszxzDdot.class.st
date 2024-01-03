@@ -12,21 +12,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'instance creation' }
-MbDEulerAngleszxzDdot class >> new [
-	^(super new: 3) initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDEulerAngleszxzDdot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 MbDEulerAngleszxzDdot >> aAddot [
 	^aAddot

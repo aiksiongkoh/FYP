@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-CC_DESIGN_PERSON_AND_ORGANIZATION_ASSIGNMENT class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 CC_DESIGN_PERSON_AND_ORGANIZATION_ASSIGNMENT >> a2Entity [
 	^a2Entity

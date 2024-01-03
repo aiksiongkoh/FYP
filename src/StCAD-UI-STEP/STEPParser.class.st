@@ -21,32 +21,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'instance creation' }
-STEPParser class >> new [
-	^super new initialize
-]
-
-{ #category : #'instance creation' }
-STEPParser class >> parse: aFilename [ 
-	| aParser aReadStream |
-	aReadStream := aFilename asFilename readStream.
-	^
-	[aReadStream lineEndAuto.
-	aParser := self new.
-	aParser inStream: aReadStream.
-	aParser parse] 
-			ensure: [aReadStream close]
-]
-
-{ #category : #'VisualWorks metadata' }
-STEPParser class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #parsing }
 STEPParser >> DATA [
 	| originalClass |

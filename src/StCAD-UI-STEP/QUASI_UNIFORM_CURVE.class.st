@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-QUASI_UNIFORM_CURVE class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #'As yet unclassified' }
 QUASI_UNIFORM_CURVE >> cControlPoint [
 

@@ -10,39 +10,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-EulerAngles class >> new [
-	^(super new: 3) initialize
-]
-
-{ #category : #'instance creation' }
-EulerAngles class >> symbolic: firstObject with: secondObject with: thirdObject [ 
-	^self 
-		with: firstObject
-		with: secondObject
-		with: thirdObject
-]
-
-{ #category : #'VisualWorks metadata' }
-EulerAngles class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-EulerAngles class >> with: firstObject with: secondObject with: thirdObject [ 
-	^(super 
-		with: firstObject
-		with: secondObject
-		with: thirdObject)
-		initialize;
-		yourself
-]
-
 { #category : #accessing }
 EulerAngles >> aA [
 	^aA

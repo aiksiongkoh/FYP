@@ -8,26 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOPartLike class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #preBuildSolidModel;
-		add: #postBuildSolidModel;
-		add: #getMassMarker;
-		add: #getColor;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOPartLike class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOPartLike >> aAPp [
 	^self massMarker aAPp

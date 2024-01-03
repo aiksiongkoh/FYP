@@ -5,26 +5,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'instance creation' }
-MbDEulerParametersDDot class >> fromqEdot: qEdot qEddot: qEddot [ 
-	^self new fromqEdot: qEdot qEddot: qEddot
-]
-
-{ #category : #'instance creation' }
-MbDEulerParametersDDot class >> new [
-	^(super new: 4) initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDEulerParametersDDot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 MbDEulerParametersDDot >> aA [
 	^qEdot aA

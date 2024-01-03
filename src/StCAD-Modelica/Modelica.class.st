@@ -9,13 +9,3 @@ Class {
 	],
 	#category : #'StCAD-Modelica'
 }
-
-{ #category : #'VisualWorks metadata' }
-Modelica class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Modelica'
-		'superclassNamespace' 'StCAD.Modelica'
-	)
-
-]

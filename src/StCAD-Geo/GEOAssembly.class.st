@@ -8,35 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOAssembly class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getAnimationData;
-		add: #getForcesTorques;
-		add: #getGravity;
-		add: #getSimulationData;
-		add: #getTime;
-		add: #getTimesAtDiscontinuities;
-		add: #getTimeSeries;
-		add: #getcLighting;
-		yourself
-]
-
-{ #category : #accessing }
-GEOAssembly class >> nameString [
-	^'Assembly'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOAssembly class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOAssembly >> aAPp [
 	^(FullMatrix identity: 3)

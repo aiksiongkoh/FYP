@@ -11,28 +11,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDirectionCosineConstraintIqcsJqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDirectionCosineConstraintIqcsJqc class >> withFrmI: afrmI frmJ: afrmJ axisI: aaxisI axisJ: aaxisJ [ 
-	^(afrmI isKindOf: MbDEndFrameqcs)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				axisI: aaxisI
-				axisJ: aaxisJ]
-		ifFalse: [nil]
-]
-
 { #category : #accessing }
 MbDDirectionCosineConstraintIqcsJqc >> addpTIeiGOpsIto: mat [ 
 	self halt: 'To be implemented.'

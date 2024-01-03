@@ -25,21 +25,6 @@ Class {
 	#category : #'StCAD-Math-StMathIntegrator'
 }
 
-{ #category : #'instance creation' }
-DifferentialAlgebraicEquationSolver class >> new: size [ 
-	^super new initialize: size
-]
-
-{ #category : #'VisualWorks metadata' }
-DifferentialAlgebraicEquationSolver class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 DifferentialAlgebraicEquationSolver >> aFAt: i put: eqn [ 
 	aF at: i put: eqn

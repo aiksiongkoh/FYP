@@ -2,17 +2,15 @@
 i used to represent gradient paints (both radial and linear)  in cairo backend
 "
 Class {
-	#name : 'AthensCairoGradientPaint',
-	#superclass : 'AthensCairoPatternPaint',
+	#name : #AthensCairoGradientPaint,
+	#superclass : #AthensCairoPatternPaint,
 	#pools : [
 		'AthensCairoDefinitions'
 	],
-	#category : 'Athens-Cairo-Paints',
-	#package : 'Athens-Cairo',
-	#tag : 'Paints'
+	#category : 'Athens-Cairo-Paints'
 }
 
-{ #category : 'paints' }
+{ #category : #paints }
 AthensCairoGradientPaint class >> createLinearGradient: aColorRamp start: aStartPoint stop: aStopPoint [
 	| paint |
 	paint := self
@@ -26,7 +24,7 @@ AthensCairoGradientPaint class >> createLinearGradient: aColorRamp start: aStart
 	^ paint
 ]
 
-{ #category : 'primitives' }
+{ #category : #primitives }
 AthensCairoGradientPaint class >> primCreateLinearX0: x0 y0: y0 x1: x1 y1: y1 [
 	^ self ffiCall: #(AthensCairoGradientPaint cairo_pattern_create_linear (
 		double x0,
@@ -35,7 +33,7 @@ AthensCairoGradientPaint class >> primCreateLinearX0: x0 y0: y0 x1: x1 y1: y1 [
 		double y1 ) )
 ]
 
-{ #category : 'primitives' }
+{ #category : #primitives }
 AthensCairoGradientPaint class >> primCreateRadialXo: xo yo: yo radiuso: radiuso x1: x1 y1: y1 radius1: radius1 [
 	^ self ffiCall: #(AthensCairoGradientPaint cairo_pattern_create_radial (
 		double xo,
@@ -46,7 +44,7 @@ AthensCairoGradientPaint class >> primCreateRadialXo: xo yo: yo radiuso: radiuso
 		double radius1 ) )
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 AthensCairoGradientPaint class >> radialBetween: origin
 	extending: innerRadius
 	and: outerOrigin
@@ -70,7 +68,7 @@ AthensCairoGradientPaint class >> radialBetween: origin
 	^ paint
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 AthensCairoGradientPaint >> addColorStopAt: anOffset colored: aColor [
 
 	self
@@ -81,14 +79,14 @@ AthensCairoGradientPaint >> addColorStopAt: anOffset colored: aColor [
 		A: aColor alpha asFloat
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 AthensCairoGradientPaint >> defaultExtend [
 "The default extend mode is CAIRO_EXTEND_NONE for surface patterns and CAIRO_EXTEND_PAD for gradient patterns.
 "
 	^  CAIRO_EXTEND_PAD
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 AthensCairoGradientPaint >> initializeRadialBetween: origin
 			extending: innerRadius
 			and: outerOrigin
@@ -102,7 +100,7 @@ AthensCairoGradientPaint >> initializeRadialBetween: origin
 			colored: each value ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 AthensCairoGradientPaint >> populateRamp: aRamp [
 	aRamp do: [ :each |
 		self
@@ -110,7 +108,7 @@ AthensCairoGradientPaint >> populateRamp: aRamp [
 			colored: each value ]
 ]
 
-{ #category : 'primitives' }
+{ #category : #primitives }
 AthensCairoGradientPaint >> primAddColorStopOffset: offset R: red G: green B: blue A: alpha [
 	^ self ffiCall:#( void cairo_pattern_add_color_stop_rgba ( cairo_pattern_t  self,
 					double offset,

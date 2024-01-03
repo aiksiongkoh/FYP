@@ -11,34 +11,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-EulerParametersDDot class >> fromqEdot: qEdot qEddot: qEddot [ 
-	^self new fromqEdot: qEdot qEddot: qEddot
-]
-
-{ #category : #'instance creation' }
-EulerParametersDDot class >> new [
-	^(super new: 4) initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-EulerParametersDDot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-EulerParametersDDot class >> with: aEulerParametersDot [ 
-	| answer |
-	answer := super new: 4.
-	answer initialize: aEulerParametersDot.
-	^answer
-]
-
 { #category : #accessing }
 EulerParametersDDot >> aA [
 	^qEdot aA

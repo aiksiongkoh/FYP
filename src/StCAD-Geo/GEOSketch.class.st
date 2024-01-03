@@ -8,21 +8,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOSketch class >> nameString [
-	^'Sketch'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOSketch class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOSketch >> addGraphic: aGEOGraphic [ 
 	aGEOGraphic container: self.
 	aGEOGraphic refFrame refFrame: refFrame.

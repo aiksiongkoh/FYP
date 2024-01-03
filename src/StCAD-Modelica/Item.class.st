@@ -4,11 +4,12 @@ Class {
 	#category : #'StCAD-Modelica'
 }
 
-{ #category : #'VisualWorks metadata' }
-Item class >> visualWorksMetadata [
+{ #category : #'initialize-release' }
+Item >> initialize [
+	^self
+]
 
-	^ #(
-		'namespace' 'StCAD.Modelica'
-	)
-
+{ #category : #'instance creation' }
+Item >> new [
+	^super new initialize
 ]

@@ -10,24 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAnglezIeqcJec class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDAnglezIeqcJec class >> withFrmI: afrmI frmJ: afrmJ [ 
-	^(afrmI isMemberOf: MbDEndFrameqc)
-		& (afrmJ isMemberOf: MbDEndFramec)
-		ifTrue: [self new withFrmI: afrmI frmJ: afrmJ]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDAnglezIeqcJec >> calcPostDynCorrectorIteration [
 	| ppcthezpEIpEI ppsthezpEIpEI ppthezpEIpEIi ppcthezpEIpEIi ppsthezpEIpEIi pcthezpEIi psthezpEIi term1 term2 term3 pcthezpEIj psthezpEIj ppthezpEIpEIij |

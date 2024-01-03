@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDPosICNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDPosICNewtonRaphson2 >> assignEquationNumbers [
 	"Equation order is q,s,u,lambar,lam."
@@ -123,79 +113,4 @@ MbDPosICNewtonRaphson2 >> lookForRedundantConstraints1 [
 				with: y negated
 				saveOriginal: false.
 	ObjectMemory garbageCollect
-]
-
-{ #category : #solving }
-MbDPosICNewtonRaphson2 >> lookForRedundantConstraints2 [
-	"
-	Alternate trying with RowPivoting and FullPivoting. 
-	Extra check may be due to insufficient matrix solver precision for large problems. 
-	Hence increase matrix solving precision.
-	"
-
-	| posICsolver |
-	nSingularMatrixError := nSingularMatrixError + 1.
-	nSingularMatrixError odd 
-		ifTrue: 
-			[matrixSolver := GESpMatParPvPrecise new.
-			[super solveEquations] on: SingularMatrixError
-				do: [:ex | self lookForRedundantConstraints]]
-		ifFalse: 
-			[system logString: #'MbD: \Checking for redundant constraints.'.
-			posICsolver := MbDGESpMatFullPvPosIC3 new.
-			posICsolver system: self.
-			ObjectMemory garbageCollect.
-			dx := posICsolver 
-						solve: pypx
-						with: y negated
-						saveOriginal: false.
-			ObjectMemory garbageCollect.
-			matrixSolver := self matrixSolverClass new]
-]
-
-{ #category : #accessing }
-MbDPosICNewtonRaphson2 >> pivotRowLimits [
-	^pivotRowLimits
-]
-
-{ #category : #solving }
-MbDPosICNewtonRaphson2 >> preRun [
-	system logString: #'MbD: \Assembling system. '.
-	super preRun
-]
-
-{ #category : #solving }
-MbDPosICNewtonRaphson2 >> run [
-	[super run]
-		on: SingularMatrixError
-		do: 
-			[:ex | 
-			| redundantEqns |
-			redundantEqns := ex parameter.
-			system partsJointsMotionsDo: [:item | item removeRedundantConstraints: redundantEqns].
-			system partsJointsMotionsDo: [:item | item constraintsReport].
-			system partsJointsMotionsDo: [:item | item setqsu: qsuOld].
-			ObjectMemory garbageCollect.
-			ex restart]
-]
-
-{ #category : #solving }
-MbDPosICNewtonRaphson2 >> solveEquations1 [
-	
-	[iterNo > 2 
-		ifTrue: 
-			[(dxNorms at: iterNo - 1) > (30.0d * (dxNorms at: iterNo - 2)) 
-				ifTrue: 
-					["Diverging solution."
-
-					SingularMatrixError raiseSignal]
-				ifFalse: [super solveEquations]]
-		ifFalse: 
-			["Make it more likely to run redundant constraint checking in the first two iterations."
-
-			matrixSolver singularPivotTolerance: 1.0d-12.
-			super solveEquations.
-			matrixSolver singularPivotTolerance: MachineAccuracy OfDoubleTimesFour]] 
-			on: SingularMatrixError
-			do: [:ex | self handleSingularMatrix]
 ]

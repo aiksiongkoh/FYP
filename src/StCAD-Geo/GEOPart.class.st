@@ -5,21 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOPart class >> nameString [
-	^'Part'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOPart class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOPart >> aColor [
 	^(self triggerEvent: #getColor) ifNil: 
 			[| answer |

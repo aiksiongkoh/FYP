@@ -11,15 +11,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOSelections class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOSelections >> emptySelf [
 	self setIndices

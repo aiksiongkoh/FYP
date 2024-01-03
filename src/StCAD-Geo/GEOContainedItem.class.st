@@ -7,33 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOContainedItem class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getMbDObject;
-		add: #getInputData;
-		add: #getDataSeries;
-		add: #getDiscontinuities;
-		add: #getChartTypes;
-		add: #getNotes;
-		yourself
-]
-
-{ #category : #'instance creation' }
-GEOContainedItem class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOContainedItem class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOContainedItem >> aSup [
 	^container

@@ -7,43 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-Function_cArg class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Function_cArg class >> with: arg1 [ 
-	| instance |
-	instance := self new.
-	instance terms add: (instance conditionArgument: arg1).
-	^instance
-]
-
-{ #category : #'instance creation' }
-Function_cArg class >> with: arg1 with: arg2 [ 
-	| instance |
-	instance := self new.
-	instance terms add: (instance conditionArgument: arg1).
-	instance terms add: (instance conditionArgument: arg2).
-	^instance
-]
-
-{ #category : #'instance creation' }
-Function_cArg class >> with: arg1 with: arg2 with: arg3 [ 
-	| instance |
-	instance := self new.
-	instance terms add: (instance conditionArgument: arg1).
-	instance terms add: (instance conditionArgument: arg2).
-	instance terms add: (instance conditionArgument: arg3).
-	^instance
-]
-
 { #category : #comparing }
 Function_cArg >> = anObject [ 
 	^super = anObject and: [terms = anObject terms]

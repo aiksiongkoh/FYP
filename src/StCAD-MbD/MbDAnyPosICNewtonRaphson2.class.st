@@ -10,16 +10,6 @@ Class {
 	#category : #'StCAD-MbD-My Classes'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAnyPosICNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 MbDAnyPosICNewtonRaphson2 >> assignEquationNumbers [
 	" *** This method was defined by StCAD.StMbD.MbDSystemNewtonRaphson2 as a subclass responsibility.

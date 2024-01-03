@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDScalarNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 MbDScalarNewtonRaphson2 >> askSystemToUpdate [
 	"Do nothing."

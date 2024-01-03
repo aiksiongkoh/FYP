@@ -7,29 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDTranslationConstraintIJ class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDTranslationConstraintIJ class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass
-						withFrmI: afrmI
-						frmJ: afrmJ
-						axis: aaxis.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDTranslationConstraintIJ >> calcPostDynCorrectorIteration [
 	aG := riIeJeIe value - aConstant

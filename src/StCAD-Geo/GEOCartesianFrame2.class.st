@@ -26,58 +26,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOCartesianFrame2 class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getvOfO;
-		add: #getomeOfO;
-		add: #getaOfO;
-		add: #getalpOfO;
-		yourself
-]
-
-{ #category : #'instance creation' }
-GEOCartesianFrame2 class >> new [
-	^super new initialize
-]
-
-{ #category : #ops }
-GEOCartesianFrame2 class >> rFpFfromrFfF: rFfF aAFf: aAFf rfpf: rfpf [ 
-	^rFfF plusFullColumn: (aAFf timesFullColumn: rfpf)
-]
-
-{ #category : #'instance creation' }
-GEOCartesianFrame2 class >> refFrame: frame rFfF: r aAFf: aA [ 
-	^self new
-		refFrame: frame
-		rFfF: r
-		aAFf: aA
-]
-
-{ #category : #'instance creation' }
-GEOCartesianFrame2 class >> refFrame: aFrame rFfF: origin xPoint: xPoint zPoint: zPoint [ 
-	^self new
-		refFrame: aFrame
-		rFfF: origin
-		xPoint: xPoint
-		zPoint: zPoint
-]
-
-{ #category : #ops }
-GEOCartesianFrame2 class >> rfpffromrFfF: rFfF aAFf: aAFf rFpF: rFpF [ 
-	^aAFf transposeTimesFullColumn: (rFpF minusFullColumn: rFfF)
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOCartesianFrame2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOCartesianFrame2 >> aAFf [
 	^aAFf

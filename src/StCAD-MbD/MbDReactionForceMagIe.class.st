@@ -12,16 +12,6 @@ Class {
 	#category : #'StCAD-MbD-MbDReaction'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDReactionForceMagIe class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDReactionForceMagIe >> calcPostDynCorrectorIteration [
 	| aFIeJtO uFIeJtO |

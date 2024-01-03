@@ -8,21 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOForceTorqueItem class >> markerI: markeri markerJ: markerj [ 
-	^super new markerI: markeri markerJ: markerj
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOForceTorqueItem class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOForceTorqueItem >> aMarkerI [
 	^markerI

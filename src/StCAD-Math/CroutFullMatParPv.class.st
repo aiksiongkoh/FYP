@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #testing }
-CroutFullMatParPv class >> isAbstractClass [
-	^false
-]
-
-{ #category : #'VisualWorks metadata' }
-CroutFullMatParPv class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #pivoting }
 CroutFullMatParPv >> doPivoting: p [ 
 	"Use scalings. Do row pivoting."

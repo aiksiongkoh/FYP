@@ -13,16 +13,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDEndFrameqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 MbDEndFrameqc >> aAdotjOe: j [ 
 	^markerFrame aAdotjOm: j

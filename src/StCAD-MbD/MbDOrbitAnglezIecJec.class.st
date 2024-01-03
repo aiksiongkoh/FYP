@@ -13,26 +13,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDOrbitAnglezIecJec class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDOrbitAnglezIecJec class >> withFrmI: afrmI frmJ: afrmJ [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass withFrmI: afrmI frmJ: afrmJ.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDOrbitAnglezIecJec >> calcPostDynCorrectorIteration [
 	| x y sumOfSquares diffOfSquares sumOfSquaresSquared thez0to2pi |

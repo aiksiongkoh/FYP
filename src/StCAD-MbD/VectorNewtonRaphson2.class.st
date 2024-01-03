@@ -7,28 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #'class initialization' }
-VectorNewtonRaphson2 class >> initSignals [
-	NotKinematicError notifierString: #'MbD: System is not pure kinematic.'; nameClass: self message: #notKinematicError
-]
-
-{ #category : #'class initialization' }
-VectorNewtonRaphson2 class >> initialize [
-	"MbDVectorNewtonRaphson2 initialize."
-
-	self initSignals
-]
-
-{ #category : #'VisualWorks metadata' }
-VectorNewtonRaphson2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 VectorNewtonRaphson2 >> fillPyPx [
 	self subclassResponsibility

@@ -10,21 +10,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOForceTorqueGeneral class >> nameString [
-	^'GeneralForceTorque'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOForceTorqueGeneral class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOForceTorqueGeneral >> aFIeKe [
 	^aFIeKe
 ]

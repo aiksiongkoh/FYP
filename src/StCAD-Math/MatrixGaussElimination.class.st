@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MatrixGaussElimination class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'back substitution' }
 MatrixGaussElimination >> backSubstituteIntoDU [
 	"DU is upper triangular with nonzero and arbitrary diagonals."

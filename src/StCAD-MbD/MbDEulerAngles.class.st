@@ -5,16 +5,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDEulerAngles class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 MbDEulerAngles >> differentiateWRT: var [ 
 	| answer |

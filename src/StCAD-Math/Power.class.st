@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-Power class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Power class >> with: base raisedTo: exponent [ 
-	^super new x: base y: exponent
-]
-
 { #category : #'StCAD-UI' }
 Power >> cadStringOn: aStream [ 
 	x cadStringOn: aStream.

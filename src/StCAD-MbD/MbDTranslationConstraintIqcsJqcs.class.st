@@ -12,24 +12,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDTranslationConstraintIqcsJqcs class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDTranslationConstraintIqcsJqcs class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	^(afrmI isKindOf: MbDEndFrameqcs)
-		& (afrmJ isKindOf: MbDEndFrameqcs)
-		ifTrue: [self new withFrmI: afrmI frmJ: afrmJ axis: aaxis]
-		ifFalse: [nil]
-]
-
 { #category : #accessing }
 MbDTranslationConstraintIqcsJqcs >> addpTIeiGOpsJto: mat [ 
 	self halt: 'To be implemented.'

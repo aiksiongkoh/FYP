@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-POLY_LOOP class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #ops }
 POLY_LOOP >> boundRectSurface: aRectSurface [ 
 	self cCurve do: [:edge | edge boundRectSurface: aRectSurface]

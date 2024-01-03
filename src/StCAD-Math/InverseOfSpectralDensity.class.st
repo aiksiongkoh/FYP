@@ -14,27 +14,6 @@ Class {
 }
 
 { #category : #accessing }
-InverseOfSpectralDensity class >> functionSymbol [
-	^'invSD'
-]
-
-{ #category : #accessing }
-InverseOfSpectralDensity class >> functionTemplate [
-	^self functionSymbol 
-		, '(time, derivOrderOfSpectrum, nfreq, freqMax, freqScale, densityScale, seed, freq1, den1, freq2, den2, ...)'
-]
-
-{ #category : #'VisualWorks metadata' }
-InverseOfSpectralDensity class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #accessing }
 InverseOfSpectralDensity >> arguments: array [ 
 	| n |
 	x := array at: 1.

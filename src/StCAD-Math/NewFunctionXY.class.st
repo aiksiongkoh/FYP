@@ -7,13 +7,3 @@ Class {
 	],
 	#category : #'StCAD-Math'
 }
-
-{ #category : #'VisualWorks metadata' }
-NewFunctionXY class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]

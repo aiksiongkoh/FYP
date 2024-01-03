@@ -25,51 +25,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-RowTypeMatrix class >> identity: n [ 
-	^(self square: n) identity
-]
-
-{ #category : #'instance creation' }
-RowTypeMatrix class >> new: nrow by: ncol [ 
-	"Creates the row dimension of a matrix and send a message to create the column 
-	dimension."
-	"StMFullMatrix new: 3 by: 4."
-
-	^(super new: nrow)
-		by: ncol
-]
-
-{ #category : #'instance creation' }
-RowTypeMatrix class >> square: n [ 
-	^self new: n by: n
-]
-
-{ #category : #'VisualWorks metadata' }
-RowTypeMatrix class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-RowTypeMatrix class >> zero: n [ 
-	self shouldNotImplement
-]
-
-{ #category : #'instance creation' }
-RowTypeMatrix class >> zero: nrow by: ncol [ 
-	"Creates the row dimension of a matrix and send a message to create the column 
-	dimension."
-
-	"StMFullMatrix zero: 3 by: 4."
-
-	^(self new: nrow by: ncol) zeroSelf
-]
-
 { #category : #converting }
 RowTypeMatrix >> asDiagonalMatrix [
 	| nrow answer |

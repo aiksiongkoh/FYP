@@ -7,13 +7,3 @@ Class {
 	],
 	#category : #'StCAD-Geo'
 }
-
-{ #category : #'VisualWorks metadata' }
-BasicPointOnCurve class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]

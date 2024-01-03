@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #accessing }
-Tan class >> functionSymbol [
-	^'tan'
-]
-
-{ #category : #'VisualWorks metadata' }
-Tan class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #evaluating }
 Tan >> differentiateWRTx [
 	^Power with: (Cos with: x copy)

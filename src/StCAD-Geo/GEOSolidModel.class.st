@@ -11,28 +11,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOSolidModel class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getDisplayList;
-		yourself
-]
-
-{ #category : #'instance creation' }
-GEOSolidModel class >> for: part [ 
-	^super new part: part
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOSolidModel class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOSolidModel >> aAPp [
 	^momentsOfVolume aAPp

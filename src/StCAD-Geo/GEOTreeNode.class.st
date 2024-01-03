@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-Geo-GEOTree'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOTreeNode class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOTreeNode >> children [
 	^children isNil

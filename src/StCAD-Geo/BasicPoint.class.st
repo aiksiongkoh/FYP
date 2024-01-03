@@ -6,13 +6,3 @@ Class {
 	],
 	#category : #'StCAD-Geo'
 }
-
-{ #category : #'VisualWorks metadata' }
-BasicPoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]

@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOEquationCurve class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOEquationCurve >> renderOn: aRenderingContext withCurveMarker: aCurveMarker [ 
 	aRenderingContext pushTransformation: refFrame aMFf

@@ -11,45 +11,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'binary storage' }
-GEOBoundingBox class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	"
-	Change order from 
-	minCorner maxCorner
-	to
-	minCorner maxCorner 
-	"
-
-	oldVersion == nil 
-		ifTrue: 
-			[| inst |
-			inst := BoundingBox basicNew.
-			^
-			[:oldObj | 
-			| new |
-			new := Array new: oldObj size.
-			new at: 1 put: (oldObj at: 1).
-			new at: 2 put: (oldObj at: 2).
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'binary storage' }
-GEOBoundingBox class >> binaryRepresentationVersion [
-	^30
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOBoundingBox class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #'initialize-release' }
 GEOBoundingBox >> center [
 	^minCorner + maxCorner / 2.0d

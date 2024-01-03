@@ -15,43 +15,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'binary storage' }
-DifferentiatedVariable class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	"Remove the instance variable 'value dependents x name wrts'."
-	"Remove the instance variable 'name value x wrts'."
-
-	oldVersion == nil
-		ifTrue: 
-			[| inst |
-			inst := self basicNew.
-			^
-			[:oldObj | 
-			| new |
-			new := Array new: 4.
-			new at: 1 put: (oldObj at: 4).
-			new at: 2 put: (oldObj at: 1).
-			new at: 3 put: (oldObj at: 3).
-			new at: 4 put: (oldObj at: 5).
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'VisualWorks metadata' }
-DifferentiatedVariable class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-DifferentiatedVariable class >> with: var wrts: derivs [ 
-	^super new x: var wrts: derivs
-]
-
 { #category : #copying }
 DifferentiatedVariable >> copy [
 	^self shallowCopy postCopy

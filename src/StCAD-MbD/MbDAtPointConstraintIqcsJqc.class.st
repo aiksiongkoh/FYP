@@ -10,24 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAtPointConstraintIqcsJqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDAtPointConstraintIqcsJqc class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	^(afrmI isKindOf: MbDEndFrameqcs)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new withFrmI: afrmI frmJ: afrmJ axis: aaxis]
-		ifFalse: [nil]
-]
-
 { #category : #accessing }
 MbDAtPointConstraintIqcsJqc >> addpTIeiGOpsIto: mat [ 
 	self halt: 'To be implemented.'

@@ -7,21 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOFeatureOrder class >> for: part [ 
-	^super new part: part
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOFeatureOrder class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOFeatureOrder >> add: aFeature [ 
 	aFeature container: self.

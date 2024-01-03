@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'VisualWorks metadata' }
-DataSSdotSddot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]
-
 { #category : #'initialize-release' }
 DataSSdotSddot >> initialize [
 	"Do nothing."

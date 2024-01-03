@@ -4,24 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOWorldFrame2 class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getaxisLength;
-		add: #getlineWidth;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOWorldFrame2 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOWorldFrame2 >> axisLength [
 	| answer |

@@ -14,16 +14,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDCouplerFunction class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDCouplerFunction >> calcPostDynCorrectorIteration [
 	| ppfuncpkineIJpkineIJsi ppfuncpkineIJpkineIJBlksi |

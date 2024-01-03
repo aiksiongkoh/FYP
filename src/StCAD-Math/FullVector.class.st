@@ -8,39 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-FullVector class >> ofOrdinalsSize: n [ 
-	"aVector filled with 1 to n in order."
-
-	^(super new: n) fillWithOrdinals
-]
-
-{ #category : #'VisualWorks metadata' }
-FullVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-FullVector class >> with: firstObject with: secondObject with1: thirdObject [ 
-	"For debugging only"
-
-	| newCollection length |
-	newCollection := self new: 3.
-	newCollection at: 1 put: firstObject.
-	newCollection at: 2 put: secondObject.
-	newCollection at: 3 put: thirdObject.
-	firstObject isReal 
-		ifTrue: 
-			[length := newCollection length.
-			length = 1 ifTrue: [self halt]].
-	^newCollection
-]
-
 { #category : #'ops on self' }
 FullVector >> at: i1 minusFullVector: aFullVector [ 
 	| iOffset i |

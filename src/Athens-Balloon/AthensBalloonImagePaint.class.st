@@ -2,20 +2,18 @@
 i representing an image (form) paint  
 "
 Class {
-	#name : 'AthensBalloonImagePaint',
-	#superclass : 'AthensPaint',
+	#name : #AthensBalloonImagePaint,
+	#superclass : #AthensPaint,
 	#instVars : [
 		'form',
 		'origin',
 		'direction',
 		'tileFlag'
 	],
-	#category : 'Athens-Balloon-Paint',
-	#package : 'Athens-Balloon',
-	#tag : 'Paint'
+	#category : 'Athens-Balloon-Paint'
 }
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonImagePaint >> athensFillPath: aPath on: anAthensCanvas [
 
 	anAthensCanvas surface engine
@@ -24,7 +22,7 @@ AthensBalloonImagePaint >> athensFillPath: aPath on: anAthensCanvas [
 		fillBezierShape: aPath contoursForFilling
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonImagePaint >> athensFillRectangle: aRect on: anAthensCanvas [
 	"This is a terminal method in rendering dispatch scheme
 	canvas->shape->paint. See AthensCanvas>>fillShape: "
@@ -39,25 +37,25 @@ AthensBalloonImagePaint >> athensFillRectangle: aRect on: anAthensCanvas [
 		fillRectangle: aRect
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> direction [
 
 	^ direction
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> direction: anObject [
 
 	direction := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> form [
 
 	^ form
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> form: anObject [
 
 	form := anObject.
@@ -65,7 +63,7 @@ AthensBalloonImagePaint >> form: anObject [
 	direction := form extent x @0
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 AthensBalloonImagePaint >> initialize [
 	super initialize.
 
@@ -74,25 +72,25 @@ AthensBalloonImagePaint >> initialize [
 	tileFlag := false
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> normal [
 
 	^ (direction y negated @ direction x * form height / form width) rounded
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> origin [
 
 	^ origin
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> origin: anObject [
 
 	origin := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonImagePaint >> repeat [
 
 	tileFlag := true

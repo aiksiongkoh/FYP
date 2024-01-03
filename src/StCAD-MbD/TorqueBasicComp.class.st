@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDTorque'
 }
 
-{ #category : #'VisualWorks metadata' }
-TorqueBasicComp class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 TorqueBasicComp >> calcPostDynCorrectorIteration [
 	twoBaxisT := (endFrame partFrame aB at: parent axis) transpose times: 2.0d

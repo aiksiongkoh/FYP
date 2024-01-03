@@ -10,16 +10,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE >> description [
 	^description

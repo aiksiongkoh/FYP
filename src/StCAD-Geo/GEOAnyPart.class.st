@@ -7,26 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOAnyPart class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getRefCurves;
-		add: #getRefPoints;
-		add: #getRefSurfaces;
-		add: #getNMT;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOAnyPart class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOAnyPart >> aDXFBLOCK [
 	^self triggerEvent: #getDXFBLOCK

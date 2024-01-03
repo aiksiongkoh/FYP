@@ -12,36 +12,6 @@ Class {
 }
 
 { #category : #accessing }
-REPRESENTATION class >> CurrentRep [
-	^CurrentRep
-]
-
-{ #category : #accessing }
-REPRESENTATION class >> CurrentRep: aREPRESENTATION [ 
-	^CurrentRep := aREPRESENTATION
-]
-
-{ #category : #accessing }
-REPRESENTATION class >> angleFactor [
-	^CurrentRep angleFactor
-]
-
-{ #category : #accessing }
-REPRESENTATION class >> lengthFactor [
-	^CurrentRep lengthFactor
-]
-
-{ #category : #'VisualWorks metadata' }
-REPRESENTATION class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
-{ #category : #accessing }
 REPRESENTATION >> context_of_items [
 	^context_of_items
 ]

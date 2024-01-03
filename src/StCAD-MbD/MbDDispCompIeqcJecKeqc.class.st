@@ -11,28 +11,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDispCompIeqcJecKeqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDispCompIeqcJecKeqc class >> withFrmI: afrmI frmJ: afrmJ frmK: afrmK axisK: integer [ 
-	^(afrmI isMemberOf: MbDEndFrameqc)
-		& (afrmJ isMemberOf: MbDEndFramec) & (afrmK isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				frmK: afrmK
-				axisK: integer]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDDispCompIeqcJecKeqc >> calcPostDynCorrectorIteration [
 	| mprIeJeOpEIT mpprIeJeOpEIpEI ppriIeJeKepXIipEK mpprIeJeOpEIipEI ppriIeJeKepEIipEI ppriIeJeKepEIipEIj mprIeJeOpEITi ppriIeJeKepEIipEK |

@@ -11,39 +11,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-EulerParametersDot class >> fromqEOp: qEOp andOmegaOpO: omeOpO [ 
-	^self new fromqEOp: qEOp andOmegaOpO: omeOpO
-]
-
-{ #category : #'instance creation' }
-EulerParametersDot class >> fromqEOp: qEOp andOmegaOpp: omeOpp [ 
-	^self new fromqEOp: qEOp andOmegaOpp: omeOpp
-]
-
-{ #category : #'instance creation' }
-EulerParametersDot class >> new [
-	^(super new: 4) initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-EulerParametersDot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-EulerParametersDot class >> with: aEulerParameters [ 
-	| answer |
-	answer := super new: 4.
-	answer initialize: aEulerParameters.
-	^answer
-]
-
 { #category : #accessing }
 EulerParametersDot >> aA [
 	^qE aA

@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-SHAPE_REPRESENTATION_RELATIONSHIP class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #'As yet unclassified' }
 SHAPE_REPRESENTATION_RELATIONSHIP >> aPart [
 	^(rep_1 isMemberOf: ADVANCED_BREP_SHAPE_REPRESENTATION) 

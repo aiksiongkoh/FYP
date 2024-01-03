@@ -4,23 +4,6 @@ Class {
 	#category : #'StCAD-UI-DXF'
 }
 
-{ #category : #'triggering events' }
-DXFBLOCK class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getDisplayList;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-DXFBLOCK class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.DXF'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 DXFBLOCK >> aBoundingBox [
 	^self triggerEvent: #getBoundingBox

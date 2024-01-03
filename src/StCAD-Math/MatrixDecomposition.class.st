@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MatrixDecomposition class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'back substitution' }
 MatrixDecomposition >> applyRowOrderOnRightHandSideB [
 	| answer |

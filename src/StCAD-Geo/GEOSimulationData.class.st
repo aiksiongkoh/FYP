@@ -23,16 +23,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'VisualWorks metadata' }
-GEOSimulationData class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOSimulationData >> corAbsTol [
 	corAbsTol == nil ifTrue: [corAbsTol := 1.0d-6].

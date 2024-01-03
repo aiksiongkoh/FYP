@@ -9,24 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAtPointConstraintIqctJqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDAtPointConstraintIqctJqc class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	^(afrmI isMemberOf: MbDEndFrameqct)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new withFrmI: afrmI frmJ: afrmJ axis: aaxis]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDAtPointConstraintIqctJqc >> calcPostDynCorrectorIteration [
 	"ppGpEIpEI is no longer constant."

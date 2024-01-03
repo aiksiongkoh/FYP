@@ -5,21 +5,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #accessing }
-FullRow class >> veryShortName [
-	^'Row'
-]
-
-{ #category : #'VisualWorks metadata' }
-FullRow class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #converting }
 FullRow >> asFullRow [
 	"Do nothing."

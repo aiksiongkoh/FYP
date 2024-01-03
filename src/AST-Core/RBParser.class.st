@@ -14,141 +14,161 @@ Shared Variables:
 	ParserType	<Symbol>	the type code we are parsing
 "
 Class {
-	#name : 'RBParser',
-	#superclass : 'Object',
+	#name : #RBParser,
+	#superclass : #Object,
 	#instVars : [
 		'scanner',
 		'currentToken',
 		'nextToken',
+		'errorBlock',
 		'source',
 		'comments',
 		'pragmas'
 	],
-	#category : 'AST-Core-Parser',
-	#package : 'AST-Core',
-	#tag : 'Parser'
+	#category : #'AST-Core-Parser'
 }
 
-{ #category : 'parsing' }
+{ #category : #accessing }
+RBParser class >> errorNodeBlock [
+	^ [ :aString :position :parser| parser parseErrorNode: aString ]
+]
+
+{ #category : #'instance creation' }
+RBParser class >> newFaulty [
+
+	^ self newWithErrorBlock: self errorNodeBlock
+]
+
+{ #category : #'instance creation' }
+RBParser class >> newWithErrorBlock: aBlock [
+
+	^ self new
+		errorBlock: aBlock;
+		yourself
+]
+
+{ #category : #parsing }
 RBParser class >> parseExpression: aString [
 	^self parseExpression: aString onError: nil
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseExpression: aString onError: aBlock [
-	^ (self parseFaultyExpression: aString) checkFaulty: aBlock
+
+	^self new
+        errorBlock: aBlock;
+        initializeParserWith: aString;
+        parseExpression
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseFaultyExpression: aString [
 	"parse aString even if syntactically incorrect. Instead of raising an error, we create an AST with RB RBParseErrorNode"
-	^ self new
-		initializeParserWith: aString;
-		parseExpression
+	^self parseExpression: aString onError: self errorNodeBlock
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseFaultyMethod: aString [
 	"parse aString even if syntactically incorrect. Instead of raising an error, we create an AST with RB RBParseErrorNode"
-	^ self new
-		initializeParserWith: aString;
-		parseMethod
+
+	^ self parseMethod: aString onError: self errorNodeBlock
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseLiterals: aString [
-
-	| scanner parser |
-	parser := self new.
-	scanner := parser scannerClass on: (ReadStream on: aString).
-	scanner state: #literalArray.
-	^ parser
-		  source: aString;
-		  scanner: scanner;
-		  parseLiterals
+	^ self new
+		  initializeParserWith: aString;
+		  parseLiterals: aString
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseMethod: aString [
 	^self parseMethod: aString onError: nil
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseMethod: aString onError: aBlock [
-	^ (self parseFaultyMethod: aString) checkFaulty: aBlock
+	| parser |
+	parser := self new
+		errorBlock: aBlock;
+		initializeParserWith: aString.
+	^ [ parser parseMethod ]
+		on: ReparseAfterSourceEditing
+		do: [ :exception | self parseMethod: exception newSource onError: aBlock ]
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseMethodPattern: aString [
 	^ (self new
+		   errorBlock: [ :error :position | ^ nil ];
 		   initializeParserWith: aString;
 		   parseMessagePattern) selector
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parsePragma: aString [
 	^ self new
 		  initializeParserWith: aString;
 		  parsePragmaAndReturn
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseRewriteExpression: aString [
 	^self parseRewriteExpression: aString onError: nil
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseRewriteExpression: aString onError: aBlock [
 	^RBPatternParser parseExpression: aString onError: aBlock
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseRewriteMethod: aString [
 	^self parseRewriteMethod: aString onError: nil
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser class >> parseRewriteMethod: aString onError: aBlock [
 	^RBPatternParser parseMethod: aString onError: aBlock
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> addCommentsTo: aNode [
 	aNode comments: aNode comments , comments.
 	comments do: [ :each | each parent: aNode ].
 	comments := OrderedCollection new
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> addParserError: errorMessage to: aNode [
 	| errorNode |
-	errorNode := self parseErrorNode: errorMessage.
+	errorNode := self parserError: errorMessage.
 	aNode addFaultyNode: errorNode.
 	^ aNode
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> addPragma: aPragma [
 	pragmas ifNil: [ pragmas := OrderedCollection new ].
 	pragmas addLast: aPragma
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> arrayNodeClass [
 	^ RBArrayNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> assignmentNodeClass [
 	^ RBAssignmentNode
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 RBParser >> atEnd [
 	^currentToken isEOF
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> basicParsePragma [
 	"Current token must be Identifier, Keyword or Binary. Else it throws an error."
 	^ currentToken isIdentifier
@@ -162,49 +182,53 @@ RBParser >> basicParsePragma [
 				ifFalse: [ self parseBinaryPragma ] ]
 ]
 
-{ #category : 'private - classes' }
+{ #category : #initialization }
+RBParser >> beFaulty [
+	errorBlock := self class errorNodeBlock
+]
+
+{ #category : #'private - classes' }
 RBParser >> blockNodeClass [
 	^ RBBlockNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> cascadeNodeClass [
 	^ RBCascadeNode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParser >> currentToken [
 	^currentToken
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> doItMethodNodeClass [
 	^ RBDoItMethodNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> englobingErrorNodeClass [
 	^RBEnglobingErrorNode
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 RBParser >> errorBlock [
-
-	self deprecated: 'see errorBlock:'
+	^errorBlock ifNil: [[:message :position | ]] ifNotNil: [errorBlock]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParser >> errorBlock: aBlock [
-
-	self deprecated: 'RBParser instances offer no more errorBlock facility. Use helpers methods on the class side, or `checkFaulty: aBlock` on a parsed AST'
+	errorBlock := aBlock.
+	scanner ifNotNil: [scanner errorBlock: aBlock]
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 RBParser >> errorPosition [
 	^currentToken ifNotNil: [ :token | token start] ifNil:[1]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> extractCommentsFrom: aToken [
 
 	aToken comments
@@ -212,7 +236,7 @@ RBParser >> extractCommentsFrom: aToken [
 		into: comments
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 RBParser >> getErrorFromClosuresWithMissingOpenings: aCollection [
 	^((currentToken isSpecial and: ['])}' includes: currentToken value])
 				" We make a distinction between the bracket and the other closures because blocks are the only ones that can contain multiple statements. "
@@ -223,51 +247,51 @@ RBParser >> getErrorFromClosuresWithMissingOpenings: aCollection [
 					ifTrue: [  aCollection isEmpty
 							ifFalse: [| errorNode | errorNode := self parseEnglobingError: (OrderedCollection with: aCollection last) with: currentToken errorMessage: ''')'' expected'.  aCollection removeLast. errorNode]
 							ifTrue: [ self parseEnglobingError: aCollection copy with: currentToken errorMessage: ''')'' expected'] ] ]
-				ifFalse: [ self parseErrorNode: 'Unknown input at end' ])
+				ifFalse: [ self parserError: 'Unknown input at end' ])
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 RBParser >> initialize [
 	comments := OrderedCollection new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParser >> initializeParserWith: aString [
 	source := aString.
 	self scanner: (self scannerClass on: (ReadStream on: aString))
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> literalArrayNodeClass [
 	^ RBLiteralArrayNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> literalNodeClass [
 	^ RBLiteralNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> literalValueNodeClass [
 	^ RBLiteralValueNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> messageNodeClass [
 	^ RBMessageNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> methodNodeClass [
 	^ RBMethodNode
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> nextToken [
 	^nextToken ifNil: [nextToken := self scannerNext]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseArray [
 	"Although an array node represents an array, it is not an Array-like object."
 	| startToken node |
@@ -283,17 +307,18 @@ RBParser >> parseArray [
 	^ node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseAssignment [
 	"Need one token lookahead to see if we have a ':='. This method could
 	make it possible to assign the literals true, false and nil."
 
-	| node position err |
+	| node position |
 	currentToken isAssignment ifTrue: [
-		err := self parseErrorNode: 'variable expected in assigment'.
+		self parserError: 'Variable expected'.
+		position := currentToken start.
 		self step. "Consume the :="
 		node := self parseAssignment. "parse the right side".
-		node := RBAssignmentErrorNode from: err contents: { node }.
+		node := RBAssignmentErrorNode contents: { node } start: position stop: node stop errorMessage: 'identifier expected in assigment'.
 		node value: ':='.
 		^ node
 	].
@@ -310,7 +335,7 @@ RBParser >> parseAssignment [
 		position: position
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseBinaryMessage [
 	| node |
 	node := self parseUnaryMessage.
@@ -321,21 +346,21 @@ RBParser >> parseBinaryMessage [
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseBinaryMessageWith: aNode [
 	| binaryNode |
 	binaryNode := self selectorNodeClass
 		value: currentToken value
-		keywordPositions: { currentToken start }.
+		keywordPositions: (Array with: currentToken start).
 	self step.
 	^self messageNodeClass
 		receiver: aNode
 		selector:  binaryNode
 		keywordsPositions: binaryNode keywordPositions
-		arguments: { self parseUnaryMessage }
+		arguments: (Array with: self parseUnaryMessage)
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseBinaryPattern [
 	| binaryToken node args |
 	currentToken isBinary
@@ -343,7 +368,7 @@ RBParser >> parseBinaryPattern [
 		^ self methodNodeClass
 			selector: #''
 			arguments: #()
-			body: (self sequenceNodeClass statements: (OrderedCollection with: (self parseErrorNode: 'Message pattern expected')))].
+			body: (self sequenceNodeClass statements: (OrderedCollection with: (self parserError: 'Message pattern expected')))].
 
 	binaryToken := currentToken.
 	self step.
@@ -357,11 +382,11 @@ RBParser >> parseBinaryPattern [
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseBinaryPragma [
 	| binaryToken |
 	currentToken isBinary
-		ifFalse: [ ^ self parseErrorNode: 'Message pattern expected' ].
+		ifFalse: [ ^ self parserError: 'Message pattern expected' ].
 	binaryToken := currentToken.
 	self step.
 	^ self pragmaNodeClass
@@ -370,7 +395,7 @@ RBParser >> parseBinaryPragma [
 		arguments: (Array with: self parsePragmaLiteral)
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseBlock [
 	| startToken node |
 	startToken := currentToken.
@@ -388,9 +413,8 @@ RBParser >> parseBlock [
 
 	(currentToken isSpecial: $])
 		ifFalse: [
-			^ (self parseEnglobingError: { node body } with: startToken errorMessage: ''']'' expected')
+			^ (self parseEnglobingError: node body statements with: startToken errorMessage: ''']'' expected')
 				arguments: node arguments;
-				stop: currentToken start - 1;
 				yourself
 		].
 	node right: currentToken start.
@@ -398,7 +422,7 @@ RBParser >> parseBlock [
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseBlockArgsInto: node [
 	| verticalBar args arg colons |
 	args := OrderedCollection new: 2.
@@ -419,16 +443,16 @@ RBParser >> parseBlockArgsInto: node [
 					self stepBar]
 				ifFalse:
 					[(currentToken isSpecial: $])
-						ifFalse: [ args add:(self parseErrorNode: '''|'' or parameter expected')]]].
+						ifFalse: [ args add:(self parserError: '''|'' or parameter expected')]]].
 	node
 		arguments: args;
 		colons: colons.
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseCascadeMessage [
-	| node receiver messages semicolons err |
+	| node receiver messages semicolons |
 	"Parse of the first message. It can be either unary, binary or keyword."
 	node := self parseKeywordMessage.
 
@@ -451,8 +475,12 @@ RBParser >> parseCascadeMessage [
 		"Cut parsing with an error.
 		If in faulty mode, continue the execution and generate a faulty cascade node.
 		Note that this bad cascade node will be added to the list of messages."
-		err := self parseErrorNode: 'Message expected'.
-		node := RBInvalidCascadeErrorNode from: err contents: { node }
+		self parserError: 'Message expected'.
+		node := RBInvalidCascadeErrorNode
+			contents: { node }
+			start: node start
+			stop: currentToken stop
+			errorMessage: 'Message expected'.
 	].
 	receiver := node receiver.
  	messages add: node.
@@ -473,7 +501,7 @@ RBParser >> parseCascadeMessage [
 	^self cascadeNodeClass messages: messages semicolons: semicolons
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseCascadeMessageWithReceiver: receiver [
 
 	| errorNode |
@@ -494,66 +522,58 @@ RBParser >> parseCascadeMessageWithReceiver: receiver [
 
 	For now, do not touch the unexpected token and let it be propagated to the caller.
 	Maybe someing up the callchain will gladly use it or know how to recover (eg unfinished statement)"
-	errorNode := self parseErrorNode: 'Cascade message expected'.
+	errorNode := self parserError: 'Cascade message expected'.
 	^ errorNode
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser >> parseDoIt [
 	"Parse and return an DoIt corresponding to the expression passed as a #source"
 	| methodNode |
 	methodNode := self doItMethodNodeClass new.
 	self parseMethodBodyInto: methodNode.
+	methodNode addReturn.
 	^methodNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> parseEnglobingError: aCollection with: aToken errorMessage: anErrorMessage [
 	| firstParse |
-	firstParse := self parseErrorNode: anErrorMessage.
+	firstParse := self parserError: anErrorMessage.
 	^firstParse isParseError
-		ifTrue: [
-			(self englobingErrorNodeClass error: aToken withNodes: aCollection)
-				value: aToken value asString;
-				errorPosition: firstParse errorPosition ]
+		ifTrue: [ (self englobingErrorNodeClass error: aToken withNodes: aCollection) value: aToken value asString ]
 		ifFalse: [ firstParse ]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'error handling' }
 RBParser >> parseErrorNode: aMessageString [
-	| errorNode |
+	| errorPosition|
 	currentToken isError
-		ifTrue: [
-			"The current token is an error, consume it and use its content for the error node."
-			errorNode := RBParseErrorNode new
-				errorMessage: currentToken cause;
-				value: currentToken value;
-				start: self errorPosition;
-				stop: currentToken stop;
-				errorPosition: currentToken location.
-			self step.
-			^ errorNode].
+		ifTrue: [ | errorNode|
+					 "The current token is an error, consume it and use its content for the error node."
+				    errorNode := RBParseErrorNode errorMessage: currentToken cause value: currentToken value at: currentToken start.
+					 errorNode stop: currentToken location.
+					 self step.
+					 ^errorNode].
 	"The current token is not an error but is unexpected. Maybe something is missing?
 	Anyway, the error node is an empty string and the current token will be used to continue the parsing."
-	^ RBParseErrorNode new
-		errorMessage: aMessageString;
-		value: '' asString;
-		start: self errorPosition;
-		stop: self errorPosition - 1;
-		errorPosition: self errorPosition
+	errorPosition := self errorPosition.
+	(errorPosition = 0) ifTrue: [ errorPosition := self errorPosition].
+	^ RBParseErrorNode errorMessage: aMessageString value: '' asString at: errorPosition
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser >> parseExpression [
 	"Parse and return an AST node corresponding to the expression passed as a #source"
 	| methodNode |
-	methodNode := self parseDoIt.
+	methodNode := self doItMethodNodeClass new.
+	self parseMethodBodyInto: methodNode.
 	^(methodNode statements size == 1 and: [ methodNode temporaries isEmpty ])
 		  ifTrue: [ methodNode statements first ]
 		  ifFalse: [ methodNode body ]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseIncompleteExpression: priorStatementsNode [
 	" This method is used when parsing an expression or a method, if the parsing of the list of statements finishes but there are some tokens left to parse."
 	 | statements error |
@@ -570,12 +590,12 @@ RBParser >> parseIncompleteExpression: priorStatementsNode [
 											  ifTrue: [ priorStatementsNode ] ]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseKeywordMessage [
 	^self parseKeywordMessageWith: self parseBinaryMessage
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseKeywordMessageWith: node [
 	| args isKeyword keywordsStartPositions selector|
 	args := OrderedCollection new: 3.
@@ -601,7 +621,7 @@ RBParser >> parseKeywordMessageWith: node [
 		ifFalse: [node]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseKeywordPattern [
 	| selector positions args node |
 	selector := ''.
@@ -622,7 +642,7 @@ RBParser >> parseKeywordPattern [
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseKeywordPragma [
 	| selector positions arguments |
 	selector := ''.
@@ -639,41 +659,34 @@ RBParser >> parseKeywordPragma [
 		arguments: arguments
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseLiteralArray [
-	| literals startToken stop faulty value prevState |
-	prevState := scanner state.
-	scanner state: #literalArray.
+	| literals startToken stop isFaulty value |
 	startToken := currentToken.
 	literals := (OrderedCollection new: 5).
-	faulty := false.
+	isFaulty := false.
 	self step.
 	[self atEnd or: [currentToken isSpecial: $)]]
 		whileFalse: [
 			literals add: (value := self parseLiteralArrayObject).
-			value isParseError ifTrue: [ faulty := true ] ].
+			value isParseError ifTrue: [ isFaulty := true ] ].
 	stop := currentToken stop.
 	(currentToken isSpecial: $))
 		ifFalse: [ ^ self parseEnglobingError: literals with: startToken errorMessage: ''')'' expected'].
-	scanner state: prevState.
 	self step.
-	faulty ifTrue: [
-		^ RBLiteralArrayErrorNode new
-			value: startToken value asString;
-		 	start: startToken start;
-			contents: literals;
+	isFaulty ifTrue: [
+		^ (self parseEnglobingError: literals with: startToken errorMessage: nil)
 			valueAfter: ')';
 			stop: stop;
-			propertyAt: #notices put: OrderedCollection new;
 			yourself ].
-	^(self literalArrayNodeClass
+	^self literalArrayNodeClass
 		startPosition: startToken start
 		contents: literals
 		stopPosition: stop
-		isByteArray: false) openerSize: startToken length.
+		isByteArray: false
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseLiteralArrayObject [
 	currentToken isSpecial
 		ifTrue:
@@ -684,94 +697,69 @@ RBParser >> parseLiteralArrayObject [
 			[^currentToken isForByteArray
 				ifTrue: [self parseLiteralByteArray]
 				ifFalse: [self parseLiteralArray]].
-
-	currentToken isError ifTrue:[ |errorNode| errorNode :=  self parseErrorNode: currentToken cause.
+	currentToken isError ifTrue:[ |errorNode| errorNode :=  self parserError: currentToken cause.
 		 ^ errorNode].
-
-	"For the moment, special tokens are transformed into symbol."
-	(currentToken isAssignment or: [ currentToken isSpecial ])
-		ifTrue: [
-			|node|
-			node := self literalValueNodeClass
-				value: currentToken value asSymbol
-				start: currentToken start
-				stop: currentToken stop.
-			node addWarning: 'Use a proper symbol literal'.
-			self step. "special"
-			^node ].
-
+	currentToken isLiteralToken ifFalse: [self patchLiteralArrayToken].
 	^self parsePrimitiveLiteral
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseLiteralByteArray [
 	"Current token is litteral array token #[ which means following tokens are part of the array
 	 until the encounter of the special character ] ."
-	| stream startToken value stop faulty |
+	| stream startToken value stop isFaulty |
 	startToken := currentToken.
 	stream := (Array new: 5) writeStream.
 	self step.
-	faulty := false.
+	isFaulty := false.
 	[self atEnd or: [currentToken isSpecial: $]]]
 		"Put literal value nodes corresponding to the bytes in the stream."
 		whileFalse: [
 			stream nextPut: (value := self parseLiteralByteArrayObject).
 			"In case of unexpected element, continue until the closing bracket, but an error node will sill be produced."
-			value isParseError ifTrue: [ faulty := true ]].
+			value isParseError ifTrue: [ isFaulty := true ]].
 	(currentToken isSpecial: $])
 		ifFalse: [ ^ self parseEnglobingError: stream contents with: startToken errorMessage: ''']'' expected'].
 	stop := currentToken stop.
 	self step.
-	faulty ifTrue: [
-		^ RBLiteralByteArrayErrorNode new
-			value: startToken value asString;
-		 	start: startToken start;
-			contents: stream contents;
+	isFaulty ifTrue: [
+		^ (self parseEnglobingError: stream contents with: startToken errorMessage: nil)
 			valueAfter: ']';
 			stop: stop;
-			propertyAt: #notices put: OrderedCollection new;
 			yourself ].
-	^(self literalArrayNodeClass
+	^self literalArrayNodeClass
 		startPosition: startToken start
 		contents: stream contents
 		stopPosition: stop
-		isByteArray: true) openerSize: startToken length.
+		isByteArray: true
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseLiteralByteArrayObject [
 	"Ensure that the object contained in the array is the value of a byte."
 	"Return a literal value node of said byte or a parse error node."
 	(currentToken isLiteralToken and:
 			[currentToken value isInteger and: [currentToken value between: 0 and: 255]])
 		ifFalse: [
-			| errorNode lost |
-			errorNode := self parseErrorNode: '8-bit integer expected'.
+			| errorNode |
+			errorNode := self parserError: '8-bit integer expected'.
 			"Error recovery: consume the token as classic literal array object"
-			lost := self parseLiteralArrayObject.
-			errorNode value: lost value asString.
-			errorNode stop: lost stop.
+			errorNode value: self parseLiteralArrayObject value asString.
 			^ errorNode ].
 	^self parsePrimitiveLiteral
 ]
 
-{ #category : 'private - parsing' }
-RBParser >> parseLiterals [
-
+{ #category : #'private - parsing' }
+RBParser >> parseLiterals: aString [
 	| stream |
 	stream := (Array new: 5) writeStream.
-	[ self atEnd ] whileFalse: [
-		| node |
-		node := (currentToken isSpecial: $))
-			        ifTrue: [
-			        self parseErrorNode: 'Unexpected closing parenthesis' ]
-			        ifFalse: [ self parseLiteralArrayObject ].
-		node isError ifTrue: [ node checkFaulty: nil ].
-		stream nextPut: node value ].
-	^ stream contents
+	[self atEnd or: [currentToken isSpecial: $)]]
+		whileFalse: [stream nextPut: self parseLiteralArrayObject].
+	self atEnd ifFalse: [ ^ self parserError: 'Unknown input at end'].
+	^stream contents collect: [ :each | each value ]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseMessagePattern [
 	currentToken isLiteralToken ifTrue: [self patchLiteralMessage].
 	^currentToken isIdentifier
@@ -782,7 +770,7 @@ RBParser >> parseMessagePattern [
 				ifFalse: [self parseBinaryPattern]]
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 RBParser >> parseMethod [
 	| methodNode |
 	methodNode := self parseMessagePattern.
@@ -792,7 +780,7 @@ RBParser >> parseMethod [
 	^methodNode
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseMethodBodyInto: aMethodNode [
 	aMethodNode source: source.
 	aMethodNode body ifNil: [ aMethodNode body: self sequenceNodeClass new ].
@@ -806,7 +794,7 @@ RBParser >> parseMethodBodyInto: aMethodNode [
 		self addCommentsTo: aMethodNode body ]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseParenthesizedExpression [
 	| node startToken |
 	startToken := currentToken.
@@ -820,41 +808,30 @@ RBParser >> parseParenthesizedExpression [
 		ifFalse: [ ^ self parseEnglobingError: (OrderedCollection with: node) with: startToken errorMessage: ''')'' expected']
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePragma [
 	"Method called by parsePragmas which already verified that current token is the special character <"
 
 	| startToken pragma |
 	startToken := currentToken.
-	self step. "<"
+	self step.
 	pragma := self basicParsePragma.
-	(currentToken isBinary: #>) ifFalse: [
-		pragma isPragma ifTrue: [
-			pragma
-				left: startToken start;
-				right: currentToken start-1 ].
+	(currentToken isBinary and: [ currentToken value == #> ]) ifFalse: [
 		pragma := self
 			          parseEnglobingError: (OrderedCollection with: pragma)
 			          with: startToken
 			          errorMessage: '''>'' expected'.
+		pragma stop: currentToken stop.
 		^ self addPragma: pragma ].
 
 	pragma
 		left: startToken start;
-		right: currentToken stop.
-
-	self step. ">"
+		right: currentToken start.
+	self step.
 	self addPragma: pragma
 ]
 
-{ #category : 'private - parsing' }
-RBParser >> parsePragmaAndReturn [
-
-	self parsePragma.
-	^ pragmas first
-]
-
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePragmaLiteral [
 	"A literal array token is #( or #[."
 	currentToken isLiteralArrayToken
@@ -862,19 +839,19 @@ RBParser >> parsePragmaLiteral [
 			[^currentToken isForByteArray
 				ifTrue: [self parseLiteralByteArray]
 				ifFalse: [self parseLiteralArray]].
-	currentToken isLiteralToken ifFalse: [^self parseErrorNode:'Literal constant expected'].
+	currentToken isLiteralToken ifFalse: [^self parserError:'Literal constant expected'].
 	"Return a literal value node."
 	^self parsePrimitiveLiteral
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePragmas [
 
-	[ currentToken isBinary: #< ]
+	[ currentToken isBinary and: [ currentToken value = #< ] ]
 		whileTrue: [ self parsePragma ]
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePrimitiveIdentifier [
 	"Creates a Variable Node and copies the value, start position and comments in said node."
 	"This method is called by parseVariableNode which makes sure current token is Identifier."
@@ -886,7 +863,7 @@ RBParser >> parsePrimitiveIdentifier [
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePrimitiveKeywordPragma [
 	| selector positions arguments |
 	selector := ''.
@@ -903,7 +880,7 @@ RBParser >> parsePrimitiveKeywordPragma [
 		arguments: arguments
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePrimitiveLiteral [
 	"Creates a literal value node from a literal token."
 	| token |
@@ -918,11 +895,12 @@ RBParser >> parsePrimitiveLiteral [
 		source: token source
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parsePrimitiveObject [
 	| errorNode |
 	currentToken isIdentifier ifTrue: [^self parsePrimitiveIdentifier].
-	currentToken isLiteralToken ifTrue: [^self parsePrimitiveLiteral].
+	(currentToken isLiteralToken and: [currentToken isMultiKeyword not])
+		ifTrue: [^self parsePrimitiveLiteral].
 	currentToken isLiteralArrayToken
 		ifTrue:
 			[^currentToken isForByteArray
@@ -934,42 +912,17 @@ RBParser >> parsePrimitiveObject [
 			currentToken value = $( ifTrue: [^self parseParenthesizedExpression].
 			currentToken value = ${ ifTrue: [^self parseArray]].
 
-	"Annotations are implemented as a magic receiver '@'"
-	(currentToken isBinary: #@) ifTrue: [
-		| position |
-		position := currentToken start.
-		self step. "@"
-		^ RBAnnotationMarkNode new start: position ].
+	": is only acceptable at the begin of a block. So just consume them as bad expression"
+	(currentToken isSpecial: $:) ifTrue: [ ^self parseVariableNode ].
 
-	":id is only acceptable at the begin of a block. So just consume them as unexpected"
-	((currentToken isSpecial: $:) and: [ self nextToken isIdentifier ])
-		ifTrue: [
-			| start |
-			start := currentToken start.
-			self step. ":"
-			errorNode := RBParseErrorNode new
-				             errorMessage: 'Unexpected block parameter';
-				             start: start;
-				             errorPosition: start;
-				             stop: currentToken stop;
-				             value: ':' , currentToken value.
-			self step. "identifier"
-			^ errorNode ].
-
-	errorNode := self parseErrorNode: 'Variable or expression expected'.
+	errorNode := self parserError: 'Variable or expression expected'.
 	^errorNode
 ]
 
-{ #category : 'private - parsing' }
-RBParser >> parseStatementInto: statementList periodList: periods withAcceptedStatementClosers: aCollectionOfClosers [
+{ #category : #'private - parsing' }
+RBParser >> parseStatementInto: statementList periodList: periods [
 
-	"Parse a statement and store it into the statement list.
-	Parse statements as valid only if they end in one of the accepted statement closers provided by the enclosing scope.
-	E.g., if we are parsing a block, a valid closer is ].
-
-	Put any period found at the end of this statement int the periods collection.
-	"
-	| returnPosition node startOfStatementToken err |
+	| returnPosition node startOfStatementToken |
 
 	"Record the token found at the beginning of the statement.
 	If at the end we did not consume it, consume it and mark it as a bad statement for now"
@@ -987,47 +940,21 @@ RBParser >> parseStatementInto: statementList periodList: periods withAcceptedSt
 				        value: self parseAssignment ]
 		ifFalse: [ node := self parseAssignment ].
 
-	"If what follows is a closer that do not match the current scope, consume them and produce the corresponding errors wrapping the statement."
-	[(')]}' includes: currentToken value)
-		and: [ (aCollectionOfClosers includes: currentToken value) not ]]
-			whileTrue: [
-				| contents |
-				err := self parseErrorNode: 'Missing opener for closer: ', currentToken value asString.
-				"If the parsing failed because it did not match anything, there was nothing before the unexpected closer"
-				contents := startOfStatementToken = currentToken ifTrue: [ #() ] ifFalse: [ { node } ].
-				node := (RBUnfinishedStatementErrorNode from: err contents: contents)
-					valueAfter: currentToken value asString;
-					stop: currentToken stop.
-				self step ].
-
-	"If the parsing failed because it did not match anything, consume the current token and continue parsing."
-	startOfStatementToken = currentToken ifTrue: [
-		"We did not progress, its mean that 1. we have a error node and 2. we are missing something (or found something unexpected, its the same thing)."
-		"Solution to recover. Consume the token to create the statement."
-		node := RBParseErrorNode new
-			errorMessage: 'Unexpected token';
-			value: currentToken value asString;
-			start: currentToken start;
-			stop: currentToken stop;
-			errorPosition: currentToken start.
-		self step ].
-
-	"Next we should have the end of the statement
+	"At this point we have parsed a full statement.
+	Next we should have the end of the statement
 	  - a dot or
-	  - an accepted scope closer e.g., )]} or
-	  - the end of the stream.
-	If it is neither, we should mark our statement as unfinished statement.
-	And we do not stack unfinished statements."
+	  - a scope closer e.g., )]} or
+	  -  or the end of the stream.
+	If it is neither, we should mark our statement as unfinished statement."
 	(currentToken value ~= $.
-		and: [ (aCollectionOfClosers includes: currentToken value) not
-			and: [ currentToken isEOF not
-				and: [ node isUnfinishedStatement not ] ] ] ) ifTrue: [
-		"I do not like the following guard. If currentToken is an unrelated error,
-		 then parserError will unfortunately consume and lose it.
-		 A better design is needed."
-		node isParseError ifFalse: [
-			err := self parseErrorNode: 'End of statement expected'.
-			node := RBUnfinishedStatementErrorNode from: err contents: { node } ]
+		and: [ ('])}' includes: currentToken value) not
+			and: [ currentToken isEOF not ] ] ) ifTrue: [
+		self parserError: 'End of statement expected'.
+		node := RBUnfinishedStatementErrorNode
+			content: { node }
+			start: node start
+			stop: node stop
+			errorMessage: 'End of statement expected'
 	].
 
 	"Then consume all dots and comments coming after this well formed statement, if there was any"
@@ -1044,13 +971,115 @@ RBParser >> parseStatementInto: statementList periodList: periods withAcceptedSt
 	"If the previous node in the statement list is a return node, mark this node as unreachable"
 
 	(statementList notEmpty and: [ statementList last isReturn ]) ifTrue: [
-		node addWarning: 'Unreachable statement' ].
+		self parserError: 'Unreachable code'.
+		node := RBUnreachableStatementErrorNode
+			content: { node }
+			start: node start
+			stop: node stop
+			errorMessage: 'Unreachable code' ].
+
+	"Commit the statement to the statements list"
+	statementList add: node.
+
+	"Consume it. This is a hack to get to work"
+	startOfStatementToken = currentToken ifTrue: [ self step ]
+]
+
+{ #category : #'private - parsing' }
+RBParser >> parseStatementInto: statementList periodList: periods withAcceptedStatementClosers: aCollectionOfClosers [
+
+	"Parse a statement and store it into the statement list.
+	Parse statements as valid only if they end in one of the accepted statement closers provided by the enclosing scope.
+	E.g., if we are parsing a block, a valid closer is ].
+
+	Put any period found at the end of this statement int the periods collection.
+	"
+	| returnPosition node startOfStatementToken |
+
+	"Record the token found at the beginning of the statement.
+	If at the end we did not consume it, consume it and mark it as a bad statement for now"
+	startOfStatementToken := currentToken.
+
+	"If the current statement starts with ^, parse it as a return + an expression.
+	Otherwise just parse it as an expression.
+	Expressions start with assignments, which have lower precedence"
+	(currentToken isSpecial: $^)
+		ifTrue: [
+			returnPosition := currentToken start.
+			self step.
+			node := self returnNodeClass
+				        start: returnPosition
+				        value: self parseAssignment ]
+		ifFalse: [ node := self parseAssignment ].
+
+	"If the parsing failed because it did not match anything, consume the current token and continue parsing."
+	startOfStatementToken = currentToken ifTrue: [
+		"We did not progress, its mean that 1. we have a error node and 2. we are missing something (or found something unexpected, its the same thing)."
+		"Solution to recover. Consume the token to create the statement."
+		node := RBParseErrorNode errorMessage: 'unexpected token' value: currentToken value asString at: currentToken start.
+		self step ].
+
+	"At this point we have parsed a full statement."
+	"If the statement is followed by closers that do not match the current scope, consume them and produce the corresponding errors wrapping the statement."
+	[(')]}' includes: currentToken value)
+		and: [ (aCollectionOfClosers includes: currentToken value) not ]]
+			whileTrue: [
+				self parserError: 'Missing opener for closer: ', currentToken value asString.
+				node := RBUnfinishedStatementErrorNode
+					contents: { node }
+					start: node start
+					stop: currentToken stop
+					errorMessage: 'Missing opener for closer: ', currentToken value asString.
+				node valueAfter: currentToken value asString.
+				self step ].
+
+	"Next we should have the end of the statement
+	  - a dot or
+	  - an accepted scope closer e.g., )]} or
+	  - the end of the stream.
+	If it is neither, we should mark our statement as unfinished statement.
+	And we do not stack unfinished statements."
+	(currentToken value ~= $.
+		and: [ (aCollectionOfClosers includes: currentToken value) not
+			and: [ currentToken isEOF not
+				and: [ node isUnfinishedStatement not ] ] ] ) ifTrue: [
+		"I do not like the following guard. If currentToken is an unrelated error,
+		 then parserError will unfortunately consume and lose it.
+		 A better design is needed."
+		node isParseError ifFalse: [ self parserError: 'End of statement expected' ].
+		node := RBUnfinishedStatementErrorNode
+			contents: { node }
+			start: node start
+			stop: node stop
+			errorMessage: 'End of statement expected'
+	].
+
+	"Then consume all dots and comments coming after this well formed statement, if there was any"
+	(currentToken isSpecial: $.) ifTrue: [
+		periods add: currentToken start.
+		self step.
+		self addCommentsTo: node ].
+
+	[ currentToken isSpecial: $. ]
+		whileTrue: [
+			periods add: currentToken start.
+			self step ].
+
+	"If the previous node in the statement list is a return node, mark this node as unreachable"
+
+	(statementList notEmpty and: [ statementList last isReturn ]) ifTrue: [
+		self parserError: 'Unreachable code'.
+		node := RBUnreachableStatementErrorNode
+			contents: { node }
+			start: node start
+			stop: node stop
+			errorMessage: 'Unreachable code' ].
 
 	"Commit the statement to the statements list"
 	statementList add: node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseStatementList: pragmaBoolean into: sequenceNode untilAnyCloserOf: aCollectionOfClosers [
 
 	"Parse a list of statements and set those statetements to a sequence node.
@@ -1088,7 +1117,7 @@ RBParser >> parseStatementList: pragmaBoolean into: sequenceNode untilAnyCloserO
 	^ sequenceNode
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseStatements: pragmaBoolean into: aSequenceNode untilAnyCloserOf: aCollectionOfClosers [
 
 	self parseTemporariesInto: aSequenceNode.
@@ -1099,7 +1128,7 @@ RBParser >> parseStatements: pragmaBoolean into: aSequenceNode untilAnyCloserOf:
 		untilAnyCloserOf: aCollectionOfClosers
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseTemporariesInto: aSequenceNode [
 	| temps leftBar rightBar errorNode startToken |
 	temps := OrderedCollection new.
@@ -1125,7 +1154,7 @@ RBParser >> parseTemporariesInto: aSequenceNode [
 	aSequenceNode leftBar: leftBar temporaries: temps rightBar: rightBar
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseTemps [
 	| temps |
 	temps := OrderedCollection new.
@@ -1133,7 +1162,7 @@ RBParser >> parseTemps [
 	^temps
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseUnaryMessage [
 	| node |
 	node := self parsePrimitiveObject.
@@ -1145,10 +1174,10 @@ RBParser >> parseUnaryMessage [
 	^node
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseUnaryMessageWith: aNode [
 	| selector |
-	selector := self selectorNodeClass value: currentToken value keywordPositions: {currentToken start}.
+	selector := self selectorNodeClass value: currentToken value keywordPositions: (Array with: currentToken start).
 	self step.
 	^self messageNodeClass
 		receiver: aNode
@@ -1157,18 +1186,18 @@ RBParser >> parseUnaryMessageWith: aNode [
 		arguments: #()
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseUnaryPattern [
 	| selector |
 	selector := currentToken.
 	self step.
 	^self methodNodeClass
 		selector: selector value asSymbol
-		keywordsPositions: {selector start}
+		keywordsPositions: (Array with: selector start)
 		arguments: #()
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseUnaryPragma [
 	"Current Token must be an Identifier."
 	"Return an RBPragmaNode."
@@ -1178,7 +1207,7 @@ RBParser >> parseUnaryPragma [
 	^ self pragmaNodeClass selector: selector value asSymbol keywordsPositions: (Array with: selector start) arguments: #()
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> parseVariableNode [
 	"If called without having an Identifier Token : sends an error.
 	 Return a variable node with current token value, start position and comments."
@@ -1186,7 +1215,7 @@ RBParser >> parseVariableNode [
 	| errorNode |
 	currentToken isIdentifier ifTrue: [ ^ self parsePrimitiveIdentifier ].
 
-	errorNode := self parseErrorNode: 'Variable name expected'.
+	errorNode := self parserError: 'Variable name expected'.
 
 	"Consume : and optional identifier that follows as an error"
 	(currentToken isSpecial: $:) ifTrue: [
@@ -1202,7 +1231,78 @@ RBParser >> parseVariableNode [
 	^ errorNode
 ]
 
-{ #category : 'private' }
+{ #category : #'error handling' }
+RBParser >> parserError: aString [
+	"Let the errorBlock try to recover from the error. Answer a ParseNode (possibly an RBParseErrorNode) or signal there is new source"
+	| errorNode errorMessage errorPosition newSource |
+	errorNode := self errorBlock cull: aString cull: self errorPosition cull: self.
+	errorNode ifNotNil: [ ^ errorNode ].
+	currentToken isError
+		ifTrue: [ errorMessage := currentToken cause. errorPosition := currentToken location ]
+		ifFalse: [errorMessage := aString. errorPosition := currentToken start].
+
+	newSource := SyntaxErrorNotification
+						inClass: Object
+						withCode: source
+						doitFlag: false
+						errorMessage: errorMessage
+						location: errorPosition.
+
+	"If the syntax error notification is resumed, then the source was corrected and we have to announce that parsing can restart."
+	ReparseAfterSourceEditing signalWithNewSource: newSource
+]
+
+{ #category : #private }
+RBParser >> patchLiteralArrayToken [
+	(currentToken isIdentifier and:
+			[self nextToken isAssignment
+				and: [currentToken stop + 1 = self nextToken start]])
+		ifTrue:
+			[currentToken := RBLiteralToken
+						value: (currentToken value , ':') asSymbol
+						start: currentToken start
+						stop: self nextToken start.
+			nextToken := RBLiteralToken
+						value: #=
+						start: nextToken stop
+						stop: nextToken stop.
+			^self].
+	currentToken isAssignment
+		ifTrue:
+			[currentToken := RBLiteralToken
+						value: #':'
+						start: currentToken start
+						stop: currentToken start.
+			nextToken := RBLiteralToken
+						value: #=
+						start: currentToken stop
+						stop: currentToken stop.
+			^self].
+	currentToken isSpecial
+		ifTrue:
+			[currentToken := RBLiteralToken
+						value: (String with: currentToken value) asSymbol
+						start: currentToken start
+						stop: currentToken stop.
+			^self].
+	(currentToken isIdentifier and: [currentToken value includes: $.])
+		ifTrue:
+			[currentToken := RBLiteralToken
+						value: currentToken value
+						start: currentToken start
+						stop: currentToken stop.
+			^self].
+	(currentToken isIdentifier
+		or: [currentToken isBinary or: [currentToken isKeyword]])
+			ifFalse: [^self parserError: 'Invalid token'].
+	currentToken := RBLiteralToken
+				value: currentToken value asSymbol
+				start: currentToken start
+				stop: currentToken stop
+				source: currentToken value asString
+]
+
+{ #category : #private }
 RBParser >> patchLiteralMessage [
 
 	currentToken value == true
@@ -1213,7 +1313,7 @@ RBParser >> patchLiteralMessage [
 		ifNil: [ ^ currentToken := RBIdentifierToken value: 'nil' start: currentToken start ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> patchNegativeLiteral [
 	"Handle the special negative number case for binary message sends."
 
@@ -1231,21 +1331,21 @@ RBParser >> patchNegativeLiteral [
 	nextToken value: nextToken value negated.
 	(nextToken isKindOf: RBNumberLiteralToken)
 		ifTrue:
-			[nextToken source: (nextToken source allButFirst)].
+			[nextToken source: (nextToken source copyFrom: 2 to: nextToken source size)].
 	nextToken start: nextToken start + 1
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> pragmaNodeClass [
 	^ RBPragmaNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> returnNodeClass [
 	^ RBReturnNode
 ]
 
-{ #category : 'private - parsing' }
+{ #category : #'private - parsing' }
 RBParser >> saveCommentsDuring: aBlock [
 	| currentComments |
 	currentComments := comments copy.
@@ -1254,42 +1354,36 @@ RBParser >> saveCommentsDuring: aBlock [
 		ensure: [ comments := comments, currentComments ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 RBParser >> scanner: aScanner [
 	scanner := aScanner.
 	pragmas := nil.
-	comments := OrderedCollection new.
+	self initialize.
 	self step
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBParser >> scannerClass [
 	^RBScanner
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> scannerNext [
 
 	^ scanner next
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> selectorNodeClass [
 	^ RBSelectorNode
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> sequenceNodeClass [
 	^ RBSequenceNode
 ]
 
-{ #category : 'accessing' }
-RBParser >> source: aString [
-
-	self initializeParserWith: aString
-]
-
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> step [
 	(currentToken notNil and: [currentToken comments notNil])
 		ifTrue: [self extractCommentsFrom: currentToken].
@@ -1299,7 +1393,7 @@ RBParser >> step [
 		ifNil: [currentToken := self scannerNext]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBParser >> stepBar [
 	"When possible, only consume the first bar (`|`) of the current binary token"
 
@@ -1316,7 +1410,7 @@ RBParser >> stepBar [
 	currentToken start: currentToken start + 1
 ]
 
-{ #category : 'private - classes' }
+{ #category : #'private - classes' }
 RBParser >> variableNodeClass [
 	^ RBVariableNode
 ]

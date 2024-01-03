@@ -7,22 +7,20 @@ Instance Variables:
 
 "
 Class {
-	#name : 'RBPatternBlockNode',
-	#superclass : 'RBBlockNode',
+	#name : #RBPatternBlockNode,
+	#superclass : #RBBlockNode,
 	#instVars : [
 		'valueBlock'
 	],
-	#category : 'AST-Core-Pattern',
-	#package : 'AST-Core',
-	#tag : 'Pattern'
+	#category : 'AST-Core-Pattern'
 }
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBPatternBlockNode >> acceptVisitor: aProgramNodeVisitor [
 	^aProgramNodeVisitor visitPatternBlockNode: self
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> addArgumentWithNameBasedOn: aString to: aRBBlockNode [
 	| name index vars |
 	name := aString.
@@ -35,7 +33,7 @@ RBPatternBlockNode >> addArgumentWithNameBasedOn: aString to: aRBBlockNode [
 		arguments: (aRBBlockNode arguments copyWith: (RBVariableNode named: name))
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> constructLookupNodeFor: aString in: aRBBlockNode [
 	^ RBMessageNode
 		  receiver: RBVariableNode selfNode
@@ -43,12 +41,12 @@ RBPatternBlockNode >> constructLookupNodeFor: aString in: aRBBlockNode [
 		  arguments: (Array with: (RBLiteralNode value: aString) with: aRBBlockNode arguments last copy)
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> copyInContext: aDictionary [
 	^ self replacingBlock value: aDictionary
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> createMatchingBlock [
 	| newBlock |
 	self arguments size > 2
@@ -64,7 +62,7 @@ RBPatternBlockNode >> createMatchingBlock [
 	^newBlock evaluateForReceiver: self
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> createReplacingBlock [
 	| newBlock |
 	self arguments size > 1
@@ -78,12 +76,12 @@ RBPatternBlockNode >> createReplacingBlock [
 	^newBlock evaluateForReceiver: self
 ]
 
-{ #category : 'testing - matching' }
+{ #category : #'testing - matching' }
 RBPatternBlockNode >> isPatternNode [
 	^ true
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> lookupMatchFor: aString in: aDictionary [
 	^aDictionary at: aString
 		ifAbsent:
@@ -92,17 +90,17 @@ RBPatternBlockNode >> lookupMatchFor: aString in: aDictionary [
 			aDictionary at: variableNode ifAbsent: [nil]]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> match: aNode inContext: aDictionary [
 	^self matchingBlock value: aNode value: aDictionary
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> matchingBlock [
 	^ valueBlock ifNil: [valueBlock := self createMatchingBlock]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> replacePatternNodesIn: aRBBlockNode [
 	aRBBlockNode body nodesDo:
 			[:each |
@@ -112,12 +110,12 @@ RBPatternBlockNode >> replacePatternNodesIn: aRBBlockNode [
 						replaceWith: (self constructLookupNodeFor: each name in: aRBBlockNode)]]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 RBPatternBlockNode >> replacingBlock [
 	^ valueBlock ifNil: [valueBlock := self createReplacingBlock]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBPatternBlockNode >> sentMessages [
 	^ OrderedCollection new
 ]

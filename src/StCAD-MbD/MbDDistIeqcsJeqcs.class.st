@@ -14,24 +14,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDistIeqcsJeqcs class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDistIeqcsJeqcs class >> withFrmI: afrmI frmJ: afrmJ [ 
-	^(afrmI isKindOf: MbDEndFrameqcs)
-		& (afrmJ isKindOf: MbDEndFrameqcs)
-		ifTrue: [self new withFrmI: afrmI frmJ: afrmJ]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDDistIeqcsJeqcs >> calcLocalSeparationDistance [
 	super calcLocalSeparationDistance

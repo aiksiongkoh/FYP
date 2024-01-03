@@ -4,28 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDispCompIeqctJeqcKeqct class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDispCompIeqctJeqcKeqct class >> withFrmI: afrmI frmJ: afrmJ frmK: afrmK axisK: integer [ 
-	^(afrmI isMemberOf: MbDEndFrameqct)
-		& (afrmJ isMemberOf: MbDEndFrameqc) & (afrmK isMemberOf: MbDEndFrameqct)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				frmK: afrmK
-				axisK: integer]
-		ifFalse: [nil]
-]
-
 { #category : #accIC }
 MbDDispCompIeqctJeqcKeqct >> preAccIC [
 	| pAjOKept mprIeJeOpt mpprIeJeOpEITpt mpprIeJeOptpt |

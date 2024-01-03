@@ -9,26 +9,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOCurveMarker class >> nameString [
-	^'CurveMarker'
-]
-
-{ #category : #'instance creation' }
-GEOCurveMarker class >> newOnFace: face [ 
-	^super new face: face
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOCurveMarker class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOCurveMarker >> aAeqnfat: col [ 
 	| prmemps tem1 te1 iem iem1 iem2 aAme |
 	prmemps := rFfFCurve rfpfEqn pvalueps: col.

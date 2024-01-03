@@ -5,16 +5,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySparse'
 }
 
-{ #category : #'VisualWorks metadata' }
-SparseRow class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #converting }
 SparseRow >> asFullRow [
 	| answer key |

@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathDifferenceOperator'
 }
 
-{ #category : #'VisualWorks metadata' }
-StableStartingBDF class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 StableStartingBDF >> derivative: i present: y past: ypast presentDerivative: ydot pastDerivative: ydotpast [ 
 	| series |

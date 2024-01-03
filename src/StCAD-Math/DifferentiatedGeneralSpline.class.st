@@ -7,21 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-DifferentiatedGeneralSpline class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-DifferentiatedGeneralSpline class >> with: aStMGeneralSpline derivativeOrder: integer [ 
-	^super new generalSpline: aStMGeneralSpline derivativeOrder: integer
-]
-
 { #category : #comparing }
 DifferentiatedGeneralSpline >> = anObject [ 
 	^super = anObject and: [derivativeOrder = anObject derivativeOrder]

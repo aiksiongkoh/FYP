@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDEndFrameqccq class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDEndFrameqccq >> calcPostDynCorrectorIteration [
 	| partFrame aAOp rpeO pAOppE prOeOpEi prOeOpEij prpeppEi prpeppEij pprOeOpEipE pAOppEi pprOeOpEipEj prpeppE prpeppEtarget pprOeOpEipEtarget |

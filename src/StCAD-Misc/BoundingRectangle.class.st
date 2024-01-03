@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'VisualWorks metadata' }
-BoundingRectangle class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]
-
 { #category : #'initialize-release' }
 BoundingRectangle >> initialize [
 	minCorner := FullColumn new: 2.

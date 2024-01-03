@@ -7,26 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEOSphSphJoint class >> mbdClass [
-	^MbDSphSphJoint
-]
-
-{ #category : #accessing }
-GEOSphSphJoint class >> nameString [
-	^'SphSphJoint'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOSphSphJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEOSphSphJoint >> createMbD [
 	| mbdSphSphJoint |

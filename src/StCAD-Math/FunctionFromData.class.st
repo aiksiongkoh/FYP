@@ -9,16 +9,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-FunctionFromData class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #comparing }
 FunctionFromData >> = anObject [ 
 	^super = anObject and: [xs = anObject xs and: [ys = anObject ys]]

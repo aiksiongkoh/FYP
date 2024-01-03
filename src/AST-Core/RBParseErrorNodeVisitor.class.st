@@ -2,19 +2,17 @@
 Visit any RBParseErrorNode in the syntax tree and evaluate a generic block
 "
 Class {
-	#name : 'RBParseErrorNodeVisitor',
-	#superclass : 'RBAbstractBlockVisitor',
-	#category : 'AST-Core-Visitors',
-	#package : 'AST-Core',
-	#tag : 'Visitors'
+	#name : #RBParseErrorNodeVisitor,
+	#superclass : #RBAbstractBlockVisitor,
+	#category : 'AST-Core-Visitors'
 }
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBParseErrorNodeVisitor >> visitEnglobingErrorNode: aNode [
 	self visitParseErrorNode: aNode
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBParseErrorNodeVisitor >> visitParseErrorNode: aNode [
 	self visitBlock value: aNode
 ]

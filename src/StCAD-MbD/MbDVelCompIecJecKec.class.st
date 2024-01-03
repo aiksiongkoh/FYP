@@ -13,30 +13,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDVelCompIecJecKec class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDVelCompIecJecKec class >> withFrmI: afrmI frmJ: afrmJ frmK: afrmK axisK: integer [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass
-						withFrmI: afrmI
-						frmJ: afrmJ
-						frmK: afrmK
-						axisK: integer.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDVelCompIecJecKec >> calcPostDynCorrectorIteration [
 	aAdotOKej := efrmK aAdotjOe: axisK.

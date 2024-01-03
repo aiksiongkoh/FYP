@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDConstantGravity class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accIC }
 MbDConstantGravity >> fillAccICIterError: col [ 
 	TheMbDSystem parts do: [:part | col at: part iqX plusFullColumn: (gXYZ times: part m)]

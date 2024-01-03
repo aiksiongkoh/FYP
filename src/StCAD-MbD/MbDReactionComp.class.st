@@ -8,24 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDReaction'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDReactionComp class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDReactionComp class >> withJoint: joint efrmK: aefrmK axis: aaxis [ 
-	^self new
-		withJoint: joint
-		efrmK: aefrmK
-		axis: aaxis
-]
-
 { #category : #accessing }
 MbDReactionComp >> partFrameK [
 	^efrmK partFrame

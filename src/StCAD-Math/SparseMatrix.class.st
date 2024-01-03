@@ -8,26 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-SparseMatrix class >> newWithElements: a2DArray [ 
-	^(FullMatrix newWithElements: a2DArray) asSparseMatrix
-]
-
-{ #category : #accessing }
-SparseMatrix class >> veryShortName [
-	^'SpMat'
-]
-
-{ #category : #'VisualWorks metadata' }
-SparseMatrix class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #converting }
 SparseMatrix >> asFullMatrix [
 	| nrow answer |

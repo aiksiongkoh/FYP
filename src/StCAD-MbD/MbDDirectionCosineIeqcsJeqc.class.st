@@ -15,28 +15,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDirectionCosineIeqcsJeqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDirectionCosineIeqcsJeqc class >> withFrmI: afrmI frmJ: afrmJ axisI: aaxisI axisJ: aaxisJ [ 
-	^(afrmI isKindOf: MbDEndFrameqcs)
-		& (afrmJ isMemberOf: MbDEndFrameqc)
-		ifTrue: [self new
-				withFrmI: afrmI
-				frmJ: afrmJ
-				axisI: aaxisI
-				axisJ: aaxisJ]
-		ifFalse: [nil]
-]
-
 { #category : #calc }
 MbDDirectionCosineIeqcsJeqc >> calcPostDynCorrectorIteration [
 	"ppAjOIepEIpEI is not long constant and must be set before any calculation."

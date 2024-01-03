@@ -1,5 +1,5 @@
 "
-	J	Jq	Js	Jt	Jqs	Jqt	Jst Jqst
+J	Jq	Js	Jt	Jqs	Jqt	Jst Jqst
 I	x	-	-	-	-	-	-	-
 Iq	x	x	-	-	-	-	-	-
 Is	x	x	x	-	-	-	-	-
@@ -52,16 +52,6 @@ Class {
 	#superclass : #MbDKinematicIeJe,
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
-
-{ #category : #'VisualWorks metadata' }
-MbDKinematicDotIeJe class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
 
 { #category : #accessing }
 MbDKinematicDotIeJe >> isKinedotIJ [

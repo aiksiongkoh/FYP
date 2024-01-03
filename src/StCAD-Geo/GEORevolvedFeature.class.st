@@ -7,13 +7,3 @@ Class {
 	],
 	#category : #'StCAD-Geo-GEO'
 }
-
-{ #category : #'VisualWorks metadata' }
-GEORevolvedFeature class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]

@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #testing }
-GEFullMatFullPv class >> isAbstractClass [
-	^false
-]
-
-{ #category : #'VisualWorks metadata' }
-GEFullMatFullPv class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solution }
 GEFullMatFullPv >> applyColOrderOnAnswerX [
 	| answer |

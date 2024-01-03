@@ -9,13 +9,3 @@ Class {
 	#superclass : #Extrapolator,
 	#category : #'StCAD-Math-StMathDifferenceOperator'
 }
-
-{ #category : #'VisualWorks metadata' }
-Interpolator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]

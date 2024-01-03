@@ -15,12 +15,3 @@ Class {
 	],
 	#category : #'Jun-DXF-Support'
 }
-
-{ #category : #'VisualWorks metadata' }
-JunDXFScanner class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'Jun'
-	)
-
-]

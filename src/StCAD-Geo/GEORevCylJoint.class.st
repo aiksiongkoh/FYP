@@ -7,26 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEORevCylJoint class >> mbdClass [
-	^MbDRevCylJoint
-]
-
-{ #category : #accessing }
-GEORevCylJoint class >> nameString [
-	^'RevCylJoint'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEORevCylJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEORevCylJoint >> createMbD [
 	| mbdRevCylJoint |

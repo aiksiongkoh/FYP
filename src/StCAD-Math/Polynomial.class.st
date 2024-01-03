@@ -7,21 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-Polynomial class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Polynomial class >> with: var coeffs: funcs [ 
-	^super new x: var coeffs: funcs
-]
-
 { #category : #comparing }
 Polynomial >> = anObject [ 
 	^super = anObject and: [coeffs = anObject coeffs]

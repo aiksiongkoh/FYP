@@ -8,26 +8,6 @@ Class {
 }
 
 { #category : #accessing }
-GEOGeneralMotion class >> mbdClass [
-	^MbDFullMotion
-]
-
-{ #category : #accessing }
-GEOGeneralMotion class >> nameString [
-	^'GeneralMotion'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOGeneralMotion class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
-{ #category : #accessing }
 GEOGeneralMotion >> angleIJJ [
 	^FullColumn 
 		with: phiIJ

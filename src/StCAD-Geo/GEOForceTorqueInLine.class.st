@@ -8,21 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEOForceTorqueInLine class >> nameString [
-	^'InLineForceTorque'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOForceTorqueInLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEOForceTorqueInLine >> createMbD [
 

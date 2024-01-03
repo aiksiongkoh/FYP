@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-SmoothCubicStep class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 SmoothCubicStep >> transitionFunctionx1: x1 y1: y1 x2: x2 y2: y2 [ 
 	| x1v y1v x2v y2v b mat |

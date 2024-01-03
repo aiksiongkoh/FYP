@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathNewtonRaphson'
 }
 
-{ #category : #'VisualWorks metadata' }
-VectorNewtonRaphson class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 VectorNewtonRaphson >> basicSolveEquations [
 "	self toDebugTxtShowContextFrom: 1 to: 100."

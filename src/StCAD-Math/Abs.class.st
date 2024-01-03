@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #accessing }
-Abs class >> functionSymbol [
-	^'abs'
-]
-
-{ #category : #'VisualWorks metadata' }
-Abs class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #evaluating }
 Abs >> differentiateWRTx [
 	^Step

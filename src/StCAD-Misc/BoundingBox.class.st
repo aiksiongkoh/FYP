@@ -8,21 +8,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'instance creation' }
-BoundingBox class >> origin: originPoint corner: cornerPoint [ 
-	^self new origin: originPoint corner: cornerPoint
-]
-
-{ #category : #'VisualWorks metadata' }
-BoundingBox class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 BoundingBox >> cCorner [
 	"Collection of corners of box."

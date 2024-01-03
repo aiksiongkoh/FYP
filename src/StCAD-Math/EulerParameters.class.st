@@ -10,49 +10,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-EulerParameters class >> new [
-	^(super new: 4) initialize
-]
-
-{ #category : #'instance creation' }
-EulerParameters class >> symbolic: aE1 with: aE2 with: aE3 with: aE4 [ 
-	^(self new)
-		at: 1 put: aE1;
-		at: 2 put: aE2;
-		at: 3 put: aE3;
-		at: 4 put: aE4;
-		calcSymbolic;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-EulerParameters class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-EulerParameters class >> with: aE1 with: aE2 with: aE3 with: aE4 [ 
-	^(self new)
-		at: 1 put: aE1 asDouble;
-		at: 2 put: aE2 asDouble;
-		at: 3 put: aE3 asDouble;
-		at: 4 put: aE4 asDouble;
-		conditionSelf;
-		calc;
-		yourself
-]
-
-{ #category : #'instance creation' }
-EulerParameters class >> withAxis: axis theta: theta [ 
-	^self new withAxis: axis theta: theta
-]
-
 { #category : #accessing }
 EulerParameters >> aA [
 	^aA

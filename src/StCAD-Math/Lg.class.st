@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #accessing }
-Lg class >> functionSymbol [
-	^'lg'
-]
-
-{ #category : #'VisualWorks metadata' }
-Lg class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #evaluating }
 Lg >> differentiateWRTx [
 	^Product with: (Power with: x copy raisedTo: (Constant with: -1))

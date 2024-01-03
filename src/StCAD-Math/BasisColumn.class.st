@@ -6,13 +6,3 @@ Class {
 	#superclass : #BasisVector,
 	#category : #'StCAD-Math-StMathArraySpecial'
 }
-
-{ #category : #'VisualWorks metadata' }
-BasisColumn class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]

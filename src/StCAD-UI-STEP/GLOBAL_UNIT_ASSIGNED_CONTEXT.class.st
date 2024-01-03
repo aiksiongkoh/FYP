@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-GLOBAL_UNIT_ASSIGNED_CONTEXT class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #'As yet unclassified' }
 GLOBAL_UNIT_ASSIGNED_CONTEXT >> angleFactor [
 	units do: [:a | a do: [:aa | aa angleFactor ifNotNil: [:aaa | ^aaa]]].

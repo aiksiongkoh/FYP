@@ -9,21 +9,6 @@ Class {
 	#category : #'StCAD-MbD-MbDSolver'
 }
 
-{ #category : #testing }
-MbDGESpMatFullPvPosIC3 class >> isAbstractClass [
-	^false
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDGESpMatFullPvPosIC3 class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #pivoting }
 MbDGESpMatFullPvPosIC3 >> doPivoting: p [ 
 	"Used by Gauss Elimination only."

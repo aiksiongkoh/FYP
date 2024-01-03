@@ -16,21 +16,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOLine class >> start: start end: end [ 
-	^self new start: start end: end
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #calc }
 GEOLine >> dataIntersectLine: geoLine tolerance: tol [ 
 	"

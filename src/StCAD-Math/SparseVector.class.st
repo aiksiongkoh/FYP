@@ -11,21 +11,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySparse'
 }
 
-{ #category : #'instance creation' }
-SparseVector class >> new: aInteger [ 
-	^(super new: aInteger)
-		fullsize: aInteger
-]
-
-{ #category : #'VisualWorks metadata' }
-SparseVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #'basic ops *' }
 SparseVector >> * aNumber [ 
 	| answer |

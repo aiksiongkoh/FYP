@@ -39,21 +39,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOMomentsOfVolume class >> newWithMoments: col [ 
-	^super basicNew moments: col
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOMomentsOfVolume class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOMomentsOfVolume >> aAPp [
 	^aAPp

@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathDifferenceOperator'
 }
 
-{ #category : #'VisualWorks metadata' }
-LinearMultiStepMethod class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 LinearMultiStepMethod >> derivative: n at: t present: y past: ypast presentDerivative: ydot pastDerivative: ydotpast [ 
 	"Interpolate or extrapolate."

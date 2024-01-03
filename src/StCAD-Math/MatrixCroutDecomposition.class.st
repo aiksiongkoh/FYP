@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MatrixCroutDecomposition class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solution }
 MatrixCroutDecomposition >> decompose: aMatrix saveOriginal: saveOriginal [ 
 	self preSolve: aMatrix saveOriginal: saveOriginal.

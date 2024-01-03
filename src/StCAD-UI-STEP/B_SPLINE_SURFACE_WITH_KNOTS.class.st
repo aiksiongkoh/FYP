@@ -11,16 +11,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-B_SPLINE_SURFACE_WITH_KNOTS class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 B_SPLINE_SURFACE_WITH_KNOTS >> aSurfaceWithBounds: cFACE_BOUND [
 

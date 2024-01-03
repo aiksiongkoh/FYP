@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathNewtonRaphson'
 }
 
-{ #category : #'VisualWorks metadata' }
-DAECorrector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 DAECorrector >> askSystemToUpdate [
 	system updateForDAECorrector

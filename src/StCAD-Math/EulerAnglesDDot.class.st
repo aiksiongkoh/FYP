@@ -12,24 +12,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'VisualWorks metadata' }
-EulerAnglesDDot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-EulerAnglesDDot class >> with: angledot [ 
-	| answer |
-	answer := super new: 3.
-	answer initialize: angledot.
-	^answer
-]
-
 { #category : #accessing }
 EulerAnglesDDot >> aAddot [
 	^aAddot

@@ -34,21 +34,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #testing }
-MatrixSolver class >> isAbstractClass [
-	^true
-]
-
-{ #category : #'VisualWorks metadata' }
-MatrixSolver class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solution }
 MatrixSolver >> basicSolve: aMatrix with: aVector saveOriginal: saveOriginal [ 
 	self subclassResponsibility

@@ -8,21 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'VisualWorks metadata' }
-EulerArray class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-EulerArray class >> zero: n [ 
-	self shouldNotImplement
-]
-
 { #category : #'basic ops' }
 EulerArray >> transpose [
 	"Return a row with the same elements."

@@ -11,13 +11,3 @@ Class {
 	],
 	#category : #'StCAD-Geo'
 }
-
-{ #category : #'VisualWorks metadata' }
-BasicNURBSSurface class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]

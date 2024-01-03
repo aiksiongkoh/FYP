@@ -18,30 +18,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDirectionCosineIecJec class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDirectionCosineIecJec class >> withFrmI: afrmI frmJ: afrmJ axisI: aaxisI axisJ: aaxisJ [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass
-						withFrmI: afrmI
-						frmJ: afrmJ
-						axisI: aaxisI
-						axisJ: aaxisJ.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #accessing }
 MbDDirectionCosineIecJec >> aAijIeJe [
 	^aAijIeJe

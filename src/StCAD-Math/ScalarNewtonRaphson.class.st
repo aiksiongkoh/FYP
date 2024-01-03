@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathNewtonRaphson'
 }
 
-{ #category : #'VisualWorks metadata' }
-ScalarNewtonRaphson class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 ScalarNewtonRaphson >> calcdxNorm [
 	"Subclasses can modify calculation of dxNorm."

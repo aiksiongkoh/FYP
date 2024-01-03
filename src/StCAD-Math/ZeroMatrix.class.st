@@ -8,22 +8,6 @@ Class {
 	#category : #'StCAD-Math-StMathArraySpecial'
 }
 
-{ #category : #'instance creation' }
-ZeroMatrix class >> new: nrow by: ncol [ 
-	^(super basicNew: 0)
-		initialize: nrow by: ncol
-]
-
-{ #category : #'VisualWorks metadata' }
-ZeroMatrix class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 ZeroMatrix >> at: i and: j [ 
 	^self elementClass zero

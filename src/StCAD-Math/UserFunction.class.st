@@ -18,43 +18,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'binary storage' }
-UserFunction class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	"Change order from 
-	'funcText' 'units' 
-	'funcText' 'myUnit' 'units'"
-
-	oldVersion == nil
-		ifTrue: 
-			[| inst |
-			inst := BasicUserFunction basicNew.
-			^
-			[:oldObj | 
-			| new |
-			new := Array new: 3.
-			new at: 1 put: (oldObj at: 1).
-			new at: 2 put: 1.0d.
-			new at: 3 put: (oldObj at: 2).
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'binary storage' }
-UserFunction class >> binaryRepresentationVersion [
-	^30
-]
-
-{ #category : #'VisualWorks metadata' }
-UserFunction class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #testing }
 UserFunction >> isUserFunction [
 	^true

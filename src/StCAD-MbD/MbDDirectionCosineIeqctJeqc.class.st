@@ -10,16 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDirectionCosineIeqctJeqc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 MbDDirectionCosineIeqctJeqc >> calcPostDynCorrectorIteration [
 	"ppAjOIepEIpEI is not longer constant and must be set before any calculation."

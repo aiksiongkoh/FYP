@@ -8,31 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDBasic'
 }
 
-{ #category : #'instance creation' }
-MbDEulerParametersDot class >> fromqEOp: qEOp andOmegaOpO: omeOpO [ 
-	^self new fromqEOp: qEOp andOmegaOpO: omeOpO
-]
-
-{ #category : #'instance creation' }
-MbDEulerParametersDot class >> fromqEOp: qEOp andOmegaOpp: omeOpp [ 
-	^self new fromqEOp: qEOp andOmegaOpp: omeOpp
-]
-
-{ #category : #'instance creation' }
-MbDEulerParametersDot class >> new [
-	^(super new: 4) initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDEulerParametersDot class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 MbDEulerParametersDot >> aA [
 	^qE aA

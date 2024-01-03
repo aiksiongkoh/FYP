@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDJoint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDInCollisionCVCVJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #collision }
 MbDInCollisionCVCVJoint >> becomeSeparatedCVCVJoint [
 	self changeClassToThatOf: MbDFullySeparatedCVCVJoint basicNew.

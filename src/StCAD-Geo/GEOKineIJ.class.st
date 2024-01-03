@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEOKineIJ class >> nameString [
-	^'KinematicIJ'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOKineIJ class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEOKineIJ >> createMbD [
 	"Do nothing."

@@ -6,8 +6,8 @@ I could be improved, but the goal is to get the information is a more or less ok
 
 "
 Class {
-	#name : 'RBSimpleFormatter',
-	#superclass : 'RBAbstractFormatter',
+	#name : #RBSimpleFormatter,
+	#superclass : #RBAbstractFormatter,
 	#instVars : [
 		'codeStream',
 		'indent',
@@ -16,45 +16,43 @@ Class {
 	#classVars : [
 		'FormatAsYouReadPolicy'
 	],
-	#category : 'AST-Core-Formatter',
-	#package : 'AST-Core',
-	#tag : 'Formatter'
+	#category : #'AST-Core-Formatter'
 }
 
-{ #category : 'public' }
+{ #category : #public }
 RBSimpleFormatter class >> format: aParseTree [
 	^self format: aParseTree withIndents: 0
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 RBSimpleFormatter class >> format: aParseTree withIndents: anInteger [
 	^ self new
 		indent: anInteger;
 		format: aParseTree
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter class >> formatAsYouReadPolicy [
 	^ FormatAsYouReadPolicy
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter class >> formatAsYouReadPolicy: anObject [
 	FormatAsYouReadPolicy := anObject
 ]
 
-{ #category : 'class initialization' }
+{ #category : #'class initialization' }
 RBSimpleFormatter class >> initialize [
 
   FormatAsYouReadPolicy := false
 ]
 
-{ #category : 'priority' }
+{ #category : #priority }
 RBSimpleFormatter class >> priority [
 	^ 0
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> addSpaceIfNeededForLastArgument: aPragmaNode [
 	aPragmaNode isUnary
 		ifTrue: [ ^ self ].
@@ -62,7 +60,7 @@ RBSimpleFormatter >> addSpaceIfNeededForLastArgument: aPragmaNode [
 		ifTrue: [ self space ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> basicFormatCommentFor: aComment [
 	codeStream
 		nextPut: $";
@@ -70,7 +68,7 @@ RBSimpleFormatter >> basicFormatCommentFor: aComment [
 		nextPut: $"
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> bracketWith: bracketString around: aBlock [
 	bracketString isEmpty
 		ifTrue: [ ^ aBlock value ].
@@ -79,23 +77,23 @@ RBSimpleFormatter >> bracketWith: bracketString around: aBlock [
 		ensure: [ codeStream nextPut: bracketString last ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> codeStream [
 	^ codeStream
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> codeStream: anObject [
 	codeStream := anObject
 ]
 
-{ #category : 'public interface' }
+{ #category : #'public interface' }
 RBSimpleFormatter >> format: aParseTree [
 	self visitNode: aParseTree.
 	^ codeStream contents
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatArray: anArrayNode [
 	anArrayNode statements
 		do: [ :each |
@@ -105,7 +103,7 @@ RBSimpleFormatter >> formatArray: anArrayNode [
 				self newLine ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatBlock: aBlockNode [
 	self
 		formatBlockArgumentsFor: aBlockNode;
@@ -114,7 +112,7 @@ RBSimpleFormatter >> formatBlock: aBlockNode [
 		space
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatBlockArgumentsFor: aBlockNode [
 	aBlockNode arguments isEmpty
 		ifTrue: [ ^ self ].
@@ -128,7 +126,7 @@ RBSimpleFormatter >> formatBlockArgumentsFor: aBlockNode [
 	codeStream nextPutAll: '| '
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatCommentsFor: aNode [
 
 	aNode comments do: [ :each |
@@ -138,7 +136,7 @@ RBSimpleFormatter >> formatCommentsFor: aNode [
 			]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatMethodBodyFor: aMethodNode [
 	self
 		indentAround: [
@@ -149,7 +147,7 @@ RBSimpleFormatter >> formatMethodBodyFor: aMethodNode [
 				visitNode: aMethodNode body ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatMethodCommentFor: aNode [
 
 	aNode comments do: [ :each |
@@ -159,19 +157,19 @@ RBSimpleFormatter >> formatMethodCommentFor: aNode [
 			]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatMethodPatternFor: aMethodNode [
 	aMethodNode arguments isEmpty
 		ifTrue: [ codeStream nextPutAll: aMethodNode selector ]
 		ifFalse: [ self privateFormatMethodPatternMonoLineFor: aMethodNode ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatPragmasFor: aMethodNode [
 	aMethodNode pragmas do: [:each | self visitNode: each; newLine ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatSelectorAndArguments: aMessageNode [
 
 	self
@@ -183,7 +181,7 @@ RBSimpleFormatter >> formatSelectorAndArguments: aMessageNode [
 				restSeparator: [ self space ] ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatSelectorAndArguments: aMessageNode firstSeparator: firstBlock restSeparator: restBlock [
 	aMessageNode isUnary
 		ifTrue: [
@@ -200,7 +198,7 @@ RBSimpleFormatter >> formatSelectorAndArguments: aMessageNode firstSeparator: fi
 							self handleLineForArgument: argument ] ] ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatSequenceNodeStatementsFor: aSequenceNode [
 	| statements |
 	statements := aSequenceNode statements.
@@ -217,7 +215,7 @@ RBSimpleFormatter >> formatSequenceNodeStatementsFor: aSequenceNode [
 			ifTrue: [  ] ]
 ]
 
-{ #category : 'private - formatting' }
+{ #category : #'private - formatting' }
 RBSimpleFormatter >> formatStatementCommentsFor: aStatementNode [
 
 	aStatementNode statementComments do: [ :each |
@@ -227,10 +225,10 @@ RBSimpleFormatter >> formatStatementCommentsFor: aStatementNode [
 			]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> formatTemporariesFor: aSequenceNode [
-	aSequenceNode hasTemporaries
-		ifFalse: [ ^ self ].
+	aSequenceNode temporaries isEmpty
+		ifTrue: [ ^ self ].
 	self
 		bracketWith: '|'
 		around: [
@@ -245,7 +243,7 @@ RBSimpleFormatter >> formatTemporariesFor: aSequenceNode [
 	self newLine
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> handleLineForArgument: anArgument [
 
   self
@@ -253,35 +251,35 @@ RBSimpleFormatter >> handleLineForArgument: anArgument [
 		visitNode: anArgument
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> indent [
 	^ indent
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> indent: anInteger [
 
 	indent := anInteger
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> indent: anInteger around: aBlock [
 	self indent: self indent + anInteger.
 	^ aBlock
 		ensure: [ self indent: self indent - anInteger ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> indentAround: aBlock [
 	self indent: 1 around: aBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> indentString [
 	^ '  '
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 RBSimpleFormatter >> initialize [
 	super initialize.
 	lineStart := 0.
@@ -289,17 +287,17 @@ RBSimpleFormatter >> initialize [
 	codeStream := (String new: 256) writeStream
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> lineStart [
 	^ lineStart
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> lineStart: anObject [
 	lineStart := anObject
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> needsParenthesisFor: aNode [
 	| parent |
 	aNode ifNil: [ ^ false ].
@@ -329,12 +327,12 @@ RBSimpleFormatter >> needsParenthesisFor: aNode [
 	^ self precedenceOf: parent selector greaterThan: aNode selector
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> newLine [
 	self newLines: 1
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> newLines: anInteger [
 	anInteger + self indentString size = 0
 		ifTrue:
@@ -349,12 +347,12 @@ RBSimpleFormatter >> newLines: anInteger [
 			[ codeStream nextPutAll: self indentString ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> pragmaArgumentNeedsSeparator: anArgumentNode [
 	^ anArgumentNode value isSymbol and: [ anArgumentNode value isBinary ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> precedenceOf: parentSelector greaterThan: childSelector [
   "Put parenthesis around things that are preceived to have 'lower' precedence. For example, 'a + b * c'
 	-> '(a + b) * c' but 'a * b + c' -> 'a * b + c'"
@@ -366,7 +364,7 @@ RBSimpleFormatter >> precedenceOf: parentSelector greaterThan: childSelector [
   ^childIndex < parentIndex
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> privateFormatMethodPatternMonoLineFor: aMethodNode [
 	self
 		with: aMethodNode selectorParts
@@ -378,42 +376,36 @@ RBSimpleFormatter >> privateFormatMethodPatternMonoLineFor: aMethodNode [
 		separatedBy: [ self space ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> space [
 	codeStream space
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 RBSimpleFormatter >> traditionalBinaryPrecedenceArray [
 	^  #(#($| $& $?) #($= $~ $< $>) #($- $+) #($* $/ $% $\) #($@))
 ]
 
-{ #category : 'visiting' }
-RBSimpleFormatter >> visitAnnotationMarkNode: aRBAnnotationValueNode [
-
-	codeStream nextPut: $@
-]
-
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitArrayNode: anArrayNode [
 	self bracketWith: '{}' around: [ self formatArray: anArrayNode ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitAssignmentNode: anAssignmentNode [
 	self visitNode: anAssignmentNode variable.
 	codeStream space; nextPutAll: anAssignmentNode assignmentOperator; space.
 	self visitNode: anAssignmentNode value
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitBlockNode: aBlockNode [
 	self
 		bracketWith: '[]'
 		around: [ self formatBlock: aBlockNode ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitCascadeNode: aCascadeNode [
 	self visitNode: aCascadeNode receiver.
 	self
@@ -429,11 +421,9 @@ RBSimpleFormatter >> visitCascadeNode: aCascadeNode [
 					self newLine ] ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitEnglobingErrorNode: aNode [
 
-	aNode isTemporariesError ifTrue: [
-		^ self formatTemporariesFor: aNode ].
 	self writeString: aNode value.
 	self formatBlockArgumentsFor: aNode.
 	aNode contents do: [ :each | self visitNode: each ] separatedBy: [
@@ -442,7 +432,7 @@ RBSimpleFormatter >> visitEnglobingErrorNode: aNode [
 	self writeString: aNode valueAfter
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitLiteralArrayNode: aRBArrayLiteralNode [
 	| brackets |
 	codeStream nextPut: $#.
@@ -456,7 +446,7 @@ RBSimpleFormatter >> visitLiteralArrayNode: aRBArrayLiteralNode [
 				separatedBy: [ self space ] ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitLiteralNode: aLiteralNode [
 	self
 		writeString:
@@ -465,21 +455,21 @@ RBSimpleFormatter >> visitLiteralNode: aLiteralNode [
 				ifTrue: [ aLiteralNode sourceText ])
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitMessageNode: aMessageNode [
 	self
 		visitNode: aMessageNode receiver;
 		formatSelectorAndArguments: aMessageNode
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitMethodNode: aMethodNode [
 	self
 		formatMethodPatternFor: aMethodNode;
 		formatMethodBodyFor: aMethodNode
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitNode: aNode [
 	| needsParenthesis |
 	needsParenthesis := self needsParenthesisFor: aNode.
@@ -491,12 +481,12 @@ RBSimpleFormatter >> visitNode: aNode [
 		around: [ super visitNode: aNode ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitParseErrorNode: aNode [
 		self writeString: aNode value
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitPatternBlockNode: aRBPatternBlockNode [
 	codeStream nextPut: $`.
 	self
@@ -504,7 +494,7 @@ RBSimpleFormatter >> visitPatternBlockNode: aRBPatternBlockNode [
 		around: [ self formatBlock: aRBPatternBlockNode ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitPatternWrapperBlockNode: aRBPatternWrapperBlockNode [
 	self visitNode: aRBPatternWrapperBlockNode wrappedNode.
 	codeStream nextPut: $`.
@@ -513,7 +503,7 @@ RBSimpleFormatter >> visitPatternWrapperBlockNode: aRBPatternWrapperBlockNode [
 		around: [ self formatBlock: aRBPatternWrapperBlockNode ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitPragmaNode: aPragmaNode [
 
 	| hackNoBrackets |
@@ -531,13 +521,13 @@ RBSimpleFormatter >> visitPragmaNode: aPragmaNode [
 	hackNoBrackets ifFalse: [ codeStream nextPut: $> ]
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitReturnNode: aReturnNode [
 	codeStream nextPut: $^.
 	self visitNode: aReturnNode value
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitSequenceNode: aSequenceNode [
 
 	self
@@ -546,12 +536,12 @@ RBSimpleFormatter >> visitSequenceNode: aSequenceNode [
 		formatSequenceNodeStatementsFor: aSequenceNode
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 RBSimpleFormatter >> visitVariableNode: aVariableNode [
 	codeStream nextPutAll: aVariableNode name
 ]
 
-{ #category : 'utilities' }
+{ #category : #utilities }
 RBSimpleFormatter >> with: firstCollection and: secondCollection do: aBlock separatedBy: separatorBlock [
 	firstCollection isEmpty
 		ifTrue: [ ^ self ].
@@ -561,7 +551,7 @@ RBSimpleFormatter >> with: firstCollection and: secondCollection do: aBlock sepa
 		aBlock value: (firstCollection at: i) value: (secondCollection at: i) ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 RBSimpleFormatter >> writeString: aString [
 	| index |
 	index := aString lastIndexOf: Character cr ifAbsent: [ 0 ].

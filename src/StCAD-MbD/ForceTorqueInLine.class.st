@@ -8,21 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'instance creation' }
-ForceTorqueInLine class >> onFrmI: efrmI andFrmJ: efrmJ [ 
-	^self new onFrmI: efrmI andFrmJ: efrmJ
-]
-
-{ #category : #'VisualWorks metadata' }
-ForceTorqueInLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 ForceTorqueInLine >> aFX [
 	^forceInLine aFTIeO

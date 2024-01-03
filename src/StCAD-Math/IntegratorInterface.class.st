@@ -13,16 +13,6 @@ Class {
 	#category : #'StCAD-Math-StMathIntegrator'
 }
 
-{ #category : #'VisualWorks metadata' }
-IntegratorInterface class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 IntegratorInterface >> changeTime: aDouble [ 
 	system time: aDouble

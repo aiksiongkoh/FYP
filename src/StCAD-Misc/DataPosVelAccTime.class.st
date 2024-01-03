@@ -6,13 +6,3 @@ Class {
 	],
 	#category : #'StCAD-Misc'
 }
-
-{ #category : #'VisualWorks metadata' }
-DataPosVelAccTime class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]

@@ -10,21 +10,6 @@ Class {
 	#category : #'StCAD-Math-StMathNewtonRaphson'
 }
 
-{ #category : #'instance creation' }
-NonlinearEquationSolver class >> new: size [ 
-	^super new initialize: size
-]
-
-{ #category : #'VisualWorks metadata' }
-NonlinearEquationSolver class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 NonlinearEquationSolver >> dx: dx x: x [ 
 	n == 1

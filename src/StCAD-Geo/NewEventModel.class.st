@@ -1,6 +1,5 @@
 "
-
-	Description: 
+Description: 
 	
 	NewEventModel tracks event handlers using its own event table instead of the class variable
 in Object, as is done with standard Digitalk events.  In this way, we can depend on garbage
@@ -26,26 +25,6 @@ Class {
 	],
 	#category : #'StCAD-Geo-GEO'
 }
-
-{ #category : #'triggering events' }
-NewEventModel class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #changed;
-		add: #release;
-		add: #cut;
-		add: #getName;
-		add: #getCADObject;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-NewEventModel class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-	)
-
-]
 
 { #category : #accessing }
 NewEventModel >> cadObject [

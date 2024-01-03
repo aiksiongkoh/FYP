@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'VisualWorks metadata' }
-TorqueVector class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #'initialize-release' }
 TorqueVector >> onFrmI: efrmI andFrmJ: efrmJ [ 
 	| comp1 comp2 comp3 |

@@ -4,20 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'instance creation' }
-Symbolic class >> new [
-	^super new initialize
-]
-
-{ #category : #'VisualWorks metadata' }
-Symbolic class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #ops }
 Symbolic >> * arg [ 
 	| func |

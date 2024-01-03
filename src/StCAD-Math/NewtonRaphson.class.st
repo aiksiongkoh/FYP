@@ -86,16 +86,6 @@ Class {
 	#category : #'StCAD-Math-StMathNewtonRaphson'
 }
 
-{ #category : #'VisualWorks metadata' }
-NewtonRaphson class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solving }
 NewtonRaphson >> askSystemToUpdate [
 	system updateForNewtonRaphson

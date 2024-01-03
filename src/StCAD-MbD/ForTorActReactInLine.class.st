@@ -7,26 +7,6 @@ Class {
 	#category : #'StCAD-MbD-MbDForce'
 }
 
-{ #category : #'instance creation' }
-ForTorActReactInLine class >> forceOnFrmI: aFrmI andFrmJ: aFrmJ [ 
-	^super new forceOnFrmI: aFrmI andFrmJ: aFrmJ
-]
-
-{ #category : #'instance creation' }
-ForTorActReactInLine class >> torqueOnFrmI: aFrmI andFrmJ: aFrmJ [ 
-	^super new torqueOnFrmI: aFrmI andFrmJ: aFrmJ
-]
-
-{ #category : #'VisualWorks metadata' }
-ForTorActReactInLine class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #calc }
 ForTorActReactInLine >> calcPostDynCorrectorIteration [
 	aFTJeO := forTorAction aFTIeO negated

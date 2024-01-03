@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT >> uncertainty [
 	^uncertainty

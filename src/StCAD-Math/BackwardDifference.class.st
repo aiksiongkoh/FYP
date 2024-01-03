@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathDifferenceOperator'
 }
 
-{ #category : #'VisualWorks metadata' }
-BackwardDifference class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #calc }
 BackwardDifference >> derivative: n at: t present: y past: ypast [ 
 	"Interpolate or extrapolate."

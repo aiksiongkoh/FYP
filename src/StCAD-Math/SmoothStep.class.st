@@ -4,26 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-SmoothStep class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-SmoothStep class >> with: variable x1: xx1 y1: yy1 x2: xx2 y2: yy2 [ 
-	^super new
-		x: variable
-		x1: xx1
-		y1: yy1
-		x2: xx2
-		y2: yy2
-]
-
 { #category : #'initialize-release' }
 SmoothStep >> x: arg x1: argx1 y1: argy1 x2: argx2 y2: argy2 [ 
 	| x1 y1 x2 y2 |

@@ -16,16 +16,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'VisualWorks metadata' }
-DataRegistration class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]
-
 { #category : #accessing }
 DataRegistration >> aEmail [
 	^aEmail

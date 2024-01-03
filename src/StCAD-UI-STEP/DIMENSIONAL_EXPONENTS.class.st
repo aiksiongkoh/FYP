@@ -13,16 +13,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-DIMENSIONAL_EXPONENTS class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 DIMENSIONAL_EXPONENTS >> amount_of_substance_exponent [
 	^amount_of_substance_exponent

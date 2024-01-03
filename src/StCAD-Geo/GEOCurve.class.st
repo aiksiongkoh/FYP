@@ -4,27 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOCurve class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getpaint;
-		add: #getalpha;
-		add: #getlineWidth;
-		add: #getstippleFactor;
-		add: #getstipplePattern;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOCurve class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOCurve >> aColor [
 	^(self triggerEvent: #getColor) ifNil: 

@@ -5,31 +5,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'instance creation' }
-FullColumn class >> fromCollection: aCollection aBlock: aBlock [ 
-	| size aFullColumn |
-	size := aCollection size.
-	aFullColumn := self new: size.
-	1 to: size
-		do: [:i | aFullColumn at: i put: (aBlock value: (aCollection at: i))].
-	^aFullColumn
-]
-
-{ #category : #accessing }
-FullColumn class >> veryShortName [
-	^'Col'
-]
-
-{ #category : #'VisualWorks metadata' }
-FullColumn class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #converting }
 FullColumn >> asFullColumn [
 

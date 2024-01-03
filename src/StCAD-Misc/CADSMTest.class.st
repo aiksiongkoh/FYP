@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'VisualWorks metadata' }
-CADSMTest class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'XProgramming.SUnit'
-	)
-
-]
-
 { #category : #testing }
 CADSMTest >> testSymbolicAssembly [
 

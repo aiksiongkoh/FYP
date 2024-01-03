@@ -8,59 +8,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'binary storage' }
-GEORackPinJoint class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [
-	"Change 
-	StCAD.Geo.GEORackPinJoint 
-	('eventTable' 'container' 'constraints' 'markerI' 'markerJ' 'pitchRadius') 
-	to 
-	StCAD.Geo.GEORackPinJoint 
-	('eventTable' 'container' 'constraints' 'markerI' 'markerJ' 'pitchRadius' aConstant)"
-	oldVersion == nil
-		ifTrue: 
-			[| inst |
-			inst := GEORackPinJoint basicNew.
-			^
-			[:oldObj |
-			| new |
-			new := Array new: 7.
-			new
-				replaceFrom: 1
-				to: 6
-				with: oldObj
-				startingAt: 1.
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst.
-			oldObj aConstant: 0.0d.
-			oldObj]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'binary storage' }
-GEORackPinJoint class >> binaryRepresentationVersion [
-	^40
-]
-
-{ #category : #accessing }
-GEORackPinJoint class >> mbdClass [
-	^MbDRackPinJoint
-]
-
-{ #category : #accessing }
-GEORackPinJoint class >> nameString [
-	^'RackPinionJoint'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEORackPinJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEORackPinJoint >> aConstant [
 	^aConstant

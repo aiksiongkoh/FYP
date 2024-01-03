@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDMotion'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDTranslation class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #accessing }
 MbDTranslation >> classString [
 	"Used to access the descriptive name of the joint."

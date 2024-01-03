@@ -6,28 +6,26 @@ font is used.
 AthensCairoSurfaceExamples exampleDrawText
 "
 Class {
-	#name : 'AthensStrikeFontRenderer',
-	#superclass : 'Object',
+	#name : #AthensStrikeFontRenderer,
+	#superclass : #Object,
 	#instVars : [
 		'font',
 		'canvas'
 	],
-	#category : 'Athens-Cairo-Text',
-	#package : 'Athens-Cairo',
-	#tag : 'Text'
+	#category : 'Athens-Cairo-Text'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 AthensStrikeFontRenderer class >> on: aCanvas forFont: aFont [
 	^ self new canvas: aCanvas; font: aFont; yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensStrikeFontRenderer >> canvas: aCanvas [
 	canvas := aCanvas
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 AthensStrikeFontRenderer >> createCairoText: aString [
 	| fdesc at |
 	at := AthensCairoText new.
@@ -37,19 +35,19 @@ AthensStrikeFontRenderer >> createCairoText: aString [
 	^ at
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensStrikeFontRenderer >> font [
 
 	^ font
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensStrikeFontRenderer >> font: anObject [
 
 	font := anObject
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensStrikeFontRenderer >> renderCharacters: aString from: start to: end [
 	| cairoText |
 	aString isEmpty

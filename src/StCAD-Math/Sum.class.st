@@ -4,29 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-Sum class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-Sum class >> with: arg1 plus: arg2 [ 
-	^super with: arg1 with: arg2
-]
-
-{ #category : #'instance creation' }
-Sum class >> with: arg1 plus: arg2 plus: arg3 [ 
-	^super
-		with: arg1
-		with: arg2
-		with: arg3
-]
-
 { #category : #'StCAD-UI' }
 Sum >> cadStringOn: aStream [ 
 	| nterms |

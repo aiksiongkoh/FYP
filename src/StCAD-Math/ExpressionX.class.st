@@ -7,21 +7,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-ExpressionX class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-ExpressionX class >> with: arg expression: func [ 
-	^super new x: arg expression: func
-]
-
 { #category : #comparing }
 ExpressionX >> = anObject [ 
 	^super = anObject and: [expression = anObject expression]

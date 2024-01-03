@@ -7,48 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'binary storage' }
-DXFPolyline class >> binaryReaderBlockForVersion: oldVersion format: oldFormat [ 
-	"
-	Change order from 
-	eventTable container refFrame rfpointsf isClosed 
-	to
-	eventTable container refFrame rfpointsf isClosed cFlag 
-	"
-
-	oldVersion == 20 
-		ifTrue: 
-			[| inst |
-			inst := self new.
-			^
-			[:oldObj | 
-			| new |
-			new := Array new: 6.
-			new 
-				replaceFrom: 1
-				to: 5
-				with: oldObj
-				startingAt: 1.
-			oldObj become: new.
-			oldObj changeClassToThatOf: inst]].
-	^super binaryReaderBlockForVersion: oldVersion format: oldFormat
-]
-
-{ #category : #'binary storage' }
-DXFPolyline class >> binaryRepresentationVersion [
-	^30
-]
-
-{ #category : #'VisualWorks metadata' }
-DXFPolyline class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 DXFPolyline >> cFlag [
 	^cFlag

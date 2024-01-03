@@ -12,21 +12,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'instance creation' }
-DataAnimation class >> new: integer [ 
-	^super new initialize: integer
-]
-
-{ #category : #'VisualWorks metadata' }
-DataAnimation class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]
-
 { #category : #accessing }
 DataAnimation >> framesPerSecond [
 	^framesPerSecond

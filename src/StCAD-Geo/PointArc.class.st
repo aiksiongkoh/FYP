@@ -16,28 +16,6 @@ Class {
 	#category : #'StCAD-Geo'
 }
 
-{ #category : #'instance creation' }
-PointArc class >> aCenter: aCenter aRadius: aRadius aStartAngle: aStartAngle aEndAngle: aEndAngle bPoint: bPoint [ 
-	^(super new)
-		aCenter: aCenter
-			aRadius: aRadius
-			aStartAngle: aStartAngle
-			aEndAngle: aEndAngle
-			bPoint: bPoint;
-		calc;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-PointArc class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 PointArc >> aCenter: aFullColumn aRadius: aDouble aStartAngle: argStartAngle aEndAngle: argEndAngle bPoint: bFullColumn [ 
 	aCenter := aFullColumn.

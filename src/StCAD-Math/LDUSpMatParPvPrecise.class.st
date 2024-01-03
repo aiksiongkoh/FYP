@@ -4,21 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #testing }
-LDUSpMatParPvPrecise class >> isAbstractClass [
-	^false
-]
-
-{ #category : #'VisualWorks metadata' }
-LDUSpMatParPvPrecise class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #pivoting }
 LDUSpMatParPvPrecise >> doPivoting: p [ 
 	"Search from bottom to top."

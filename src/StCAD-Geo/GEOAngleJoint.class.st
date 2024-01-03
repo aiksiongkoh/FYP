@@ -7,26 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEOAngleJoint class >> mbdClass [
-	^MbDAngleJoint
-]
-
-{ #category : #accessing }
-GEOAngleJoint class >> nameString [
-	^'AngleJoint'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOAngleJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEOAngleJoint >> createMbD [
 	| mbdScrewJoint |

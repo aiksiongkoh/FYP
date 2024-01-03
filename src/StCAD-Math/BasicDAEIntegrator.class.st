@@ -57,16 +57,6 @@ Class {
 	#category : #'StCAD-Math-StMathIntegrator'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicDAEIntegrator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #run }
 BasicDAEIntegrator >> calcG [
 	"It is ok to modify pFpydot since its values are not reused."

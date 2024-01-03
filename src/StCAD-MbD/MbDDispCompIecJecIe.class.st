@@ -10,26 +10,6 @@ Class {
 	#category : #'StCAD-MbD-MbDKinematicIJ'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDDispCompIecJecIe class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDDispCompIecJecIe class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass withFrmI: afrmI frmJ: afrmJ axis: aaxis.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #accessing }
 MbDDispCompIecJecIe >> axis [
 	^axis

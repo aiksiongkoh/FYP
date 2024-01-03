@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION >> context_of_items [
 	^context_of_items

@@ -8,29 +8,6 @@ Class {
 	#category : #'StCAD-MbD-MbDConstraint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDAtPointConstraintIJ class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
-{ #category : #'instance creation' }
-MbDAtPointConstraintIJ class >> withFrmI: afrmI frmJ: afrmJ axis: aaxis [ 
-	| instance |
-	self allSubclasses
-		do: 
-			[:subclass | 
-			instance := subclass
-						withFrmI: afrmI
-						frmJ: afrmJ
-						axis: aaxis.
-			instance notNil ifTrue: [^instance]]
-]
-
 { #category : #calc }
 MbDAtPointConstraintIJ >> calcPostDynCorrectorIteration [
 	aG := riIeJeO riIeJeO - aConstant

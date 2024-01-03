@@ -4,26 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #accessing }
-GEORotationalMotion class >> mbdClass [
-	^MbDZRotation
-]
-
-{ #category : #accessing }
-GEORotationalMotion class >> nameString [
-	^'RotationalMotion'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEORotationalMotion class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEORotationalMotion >> createMbD [
 	| phiFunc parser stack func mbdZRotation |

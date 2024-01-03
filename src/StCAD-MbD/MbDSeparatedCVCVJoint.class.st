@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-MbD-MbDJoint'
 }
 
-{ #category : #'VisualWorks metadata' }
-MbDSeparatedCVCVJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
-
 { #category : #dynamic }
 MbDSeparatedCVCVJoint >> becomeStartingInContactCVCVJoint [
 	self changeClassToThatOf: MbDStartingInContactCVCVJoint basicNew.

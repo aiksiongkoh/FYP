@@ -2,18 +2,16 @@
 i represent a radial gradient paint in balloon backend.
 "
 Class {
-	#name : 'AthensBalloonRadialGradient',
-	#superclass : 'AthensBalloonGradientPaint',
+	#name : #AthensBalloonRadialGradient,
+	#superclass : #AthensBalloonGradientPaint,
 	#instVars : [
 		'center',
 		'radius'
 	],
-	#category : 'Athens-Balloon-Paint',
-	#package : 'Athens-Balloon',
-	#tag : 'Paint'
+	#category : 'Athens-Balloon-Paint'
 }
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonRadialGradient >> athensFillPath: aPath on: anAthensCanvas [
 	"This is a terminal method in rendering dispatch scheme
 	canvas->shape->paint. See AthensCanvas>>fillShape: "
@@ -28,7 +26,7 @@ AthensBalloonRadialGradient >> athensFillPath: aPath on: anAthensCanvas [
 		fillBezierShape: aPath contoursForFilling
 ]
 
-{ #category : 'rendering' }
+{ #category : #rendering }
 AthensBalloonRadialGradient >> athensFillRectangle: aRect on: anAthensCanvas [
 	"This is a terminal method in rendering dispatch scheme
 	canvas->shape->paint. See AthensCanvas>>fillShape: "
@@ -45,25 +43,25 @@ AthensBalloonRadialGradient >> athensFillRectangle: aRect on: anAthensCanvas [
 		fillRectangle: aRect
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonRadialGradient >> center [
 
 	^ center
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonRadialGradient >> center: anObject [
 
 	center := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonRadialGradient >> radius [
 
 	^ radius
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 AthensBalloonRadialGradient >> radius: anObject [
 
 	radius := anObject

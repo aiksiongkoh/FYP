@@ -19,29 +19,10 @@ Class {
 		'ppTpEpEdot'
 	],
 	#classVars : [
-		'MbD',
 		'MbD'
 	],
 	#category : #'StCAD-MbD-MbDBasic'
 }
-
-{ #category : #'class initialization' }
-MbDPart class >> initialize [
-	"MbDPart initialize."
-
-	Identity3by3 := DiagonalMatrix new: 3 withAll: 1.0d.
-	Identity4by4 := DiagonalMatrix new: 4 withAll: 1.0d
-]
-
-{ #category : #'VisualWorks metadata' }
-MbDPart class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.MbD'
-		'superclassNamespace' 'StCAD.MbD'
-	)
-
-]
 
 { #category : #patching }
 MbDPart >> aA [

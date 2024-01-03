@@ -7,16 +7,6 @@ Class {
 	#category : #'StCAD-UI-STEP'
 }
 
-{ #category : #'VisualWorks metadata' }
-REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.UI.STEP'
-		'superclassNamespace' 'StCAD.UI.STEP'
-	)
-
-]
-
 { #category : #accessing }
 REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION >> aAFf [
 	^transformation_operator aAFf

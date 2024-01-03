@@ -31,24 +31,6 @@ Class {
 	#category : #'StCAD-Math-StMathFunctionSymbolic'
 }
 
-{ #category : #'VisualWorks metadata' }
-PiecewiseFunction class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
-{ #category : #'instance creation' }
-PiecewiseFunction class >> with: var functions: funcs transitions: trans [ 
-	^super new
-		x: var
-		functions: funcs
-		transitions: trans
-]
-
 { #category : #comparing }
 PiecewiseFunction >> = anObject [ 
 	^super = anObject and: [functions = anObject functions and: [transitions = anObject transitions]]

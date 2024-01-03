@@ -5,16 +5,6 @@ Class {
 	#category : #'StCAD-Math-StMathArray'
 }
 
-{ #category : #'VisualWorks metadata' }
-DiagonalMatrix class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #accessing }
 DiagonalMatrix >> at: i and: j [ 
 	^i == j

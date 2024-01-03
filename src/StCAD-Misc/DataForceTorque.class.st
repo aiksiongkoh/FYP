@@ -8,16 +8,6 @@ Class {
 	#category : #'StCAD-Misc'
 }
 
-{ #category : #'VisualWorks metadata' }
-DataForceTorque class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Misc'
-		'superclassNamespace' 'StCAD.Misc'
-	)
-
-]
-
 { #category : #accessing }
 DataForceTorque >> aFIO [
 	aFIO == nil ifTrue: [self aFIO: (FullColumn zero: 3)].

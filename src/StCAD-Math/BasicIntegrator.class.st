@@ -19,16 +19,6 @@ Class {
 	#category : #'StCAD-Math-StMathIntegrator'
 }
 
-{ #category : #'VisualWorks metadata' }
-BasicIntegrator class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #run }
 BasicIntegrator >> calcOperatorMatrix [
 	opBDF calcOperatorMatrix

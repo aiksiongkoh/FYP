@@ -7,31 +7,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'instance creation' }
-GEOCVCVJoint class >> faceI: facei faceJ: facej [ 
-	^super new faceI: facei faceJ: facej
-]
-
-{ #category : #accessing }
-GEOCVCVJoint class >> mbdClass [
-	^MbDFullySeparatedCVCVJoint
-]
-
-{ #category : #accessing }
-GEOCVCVJoint class >> nameString [
-	^'CurveCurveContact'
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOCVCVJoint class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #DYN }
 GEOCVCVJoint >> canUpdateForFrame: integer [ 
 	(super canUpdateForFrame: integer)

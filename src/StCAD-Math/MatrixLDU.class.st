@@ -4,16 +4,6 @@ Class {
 	#category : #'StCAD-Math-StMathMatrixSolver'
 }
 
-{ #category : #'VisualWorks metadata' }
-MatrixLDU class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Math'
-		'superclassNamespace' 'StCAD.Math'
-	)
-
-]
-
 { #category : #solution }
 MatrixLDU >> decompose: aMatrix saveOriginal: saveOriginal [ 
 	self preSolve: aMatrix saveOriginal: saveOriginal.

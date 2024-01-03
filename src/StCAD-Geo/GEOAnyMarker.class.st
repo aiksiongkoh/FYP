@@ -4,24 +4,6 @@ Class {
 	#category : #'StCAD-Geo-GEO'
 }
 
-{ #category : #'triggering events' }
-GEOAnyMarker class >> constructEventsTriggered [
-	^(super constructEventsTriggered)
-		add: #getaxisLength;
-		add: #getlineWidth;
-		yourself
-]
-
-{ #category : #'VisualWorks metadata' }
-GEOAnyMarker class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'StCAD.Geo'
-		'superclassNamespace' 'StCAD.Geo'
-	)
-
-]
-
 { #category : #accessing }
 GEOAnyMarker >> addMarkersIn: set [ 
 	set add: self
